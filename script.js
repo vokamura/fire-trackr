@@ -7,6 +7,7 @@ function startApp(){
 }
 
 function getDataFromServer() {   
+    //https://inciweb.nwcg.gov/feeds/
     var myURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
     var proxy = "https://cors.io/?";
     var getData = {
@@ -29,11 +30,13 @@ function useXML(response){
 
     var eachFireItem = $(response).find("item");
 
-    // var prefix = "geo:";
-    // var fireLat = eachFireItem.getElementsByTagName(prefix + "lat");
-    // console.log(fireLat);
-
     for (var item=0; item < eachFireItem.length; item++){
+
+        var fireLat = response.getElementsByTagName("geo:lat")[item].textContent;
+        latArray.push(fireLat);
+
+        var fireLong = response.getElementsByTagName("geo:long")[item].textContent;
+        longArray.push(fireLong);
 
         var fireTitle = $("<td>", {
             text: eachFireItem.find("title")[item].textContent,
@@ -58,12 +61,6 @@ function useXML(response){
         }).append(fireTitle, firePublished, fireDescription, fireLink);
 
         $("table").append(fireRow);
-
-        // var fireLat = eachFireItem.find("geo:lat")[i].textContent;
-        // console.log(fireLat);
-        // latArray.push(fireLat);
-        // var fireLong = eachFireItem.find("geo:long")[i].textContent;
-        // longArray.push(fireLong);
     }    
 }
 
@@ -134,6 +131,35 @@ let mapWindow;
 //       $.ajax(settings);
 // }
 
+// function getMap(coords) {
+//     $("#map").css("height", "50vh");
+//     $("#map").css("width", "30vw");
+//     let currentLocation = coords ? coords : {lat: 36.778259, lng: -119.417931};
+
+//     map = new google.maps.Map(document.getElementById("map"), {
+//         center: currentLocation,
+//         zoom: 6
+//     });
+    
+//     mapWindow = new google.maps.InfoWindow();
+//     const service = new google.maps.places.PlacesService(map);
+//     service.nearbySearch({
+//         location: currentLocation,
+//         radius: 1000000,
+//         type: ["bakery"],
+//         openNow: true,
+//         keyword: "bakery"
+//     }, mapCallback);
+// }
+
+// function mapCallback(mapResults, status) {
+//     if (status === google.maps.places.PlacesServiceStatus.OK) {
+//         for (let place = 0; place < mapResults.length; place++) {
+//             createMarker(mapResults[place]);
+//         }
+//     }
+// }
+
 function getMap(coords) {
     $("#map").css("height", "50vh");
     $("#map").css("width", "30vw");
@@ -162,6 +188,7 @@ function mapCallback(mapResults, status) {
         }
     }
 }
+
 
 function createMarker(place) {
     // const placeLoc = place.geometry.location;
