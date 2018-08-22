@@ -1,38 +1,50 @@
+body {
+    text-align: left;
+}
+
 .navbar h1, .navbar a, .nav bar a:visited, .navbar a:hover {
     color: white;
+    text-decoration: none;
+}
+
+td a {
+    font-weight: bold;
+    color: black;
 }
 
 #map {
-    margin: 3% 20%;
+    margin: auto;
     min-height: 40vh;
     max-height: 40vh;
     min-width: 70vw;
     max-width: 70vw;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-/* @media (min-width: 576px) { 
-
-} */
-
-/* Medium devices (tablets, 768px and up) */
-/* @media (min-width: 768px) { 
-
-} */
-
-/* Large devices (desktops, 992px and up) */
-/* @media (min-width: 992px) { 
-
-} */
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    /* .container{
-        max-width: 95%;
-    } */
+.table-responsive {
+    width: 95%;
+    margin: auto;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 576px) { 
+    #hidexs {
+        display: none
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {...} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {...} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {...} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {...}
+
 .logoImage {
-    max-width: 15%;
-    max-height: 15%
+    max-width: 10%;
+    max-height: 10%;
 }

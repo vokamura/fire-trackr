@@ -47,28 +47,32 @@ function useXML(response){
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-2 text-center nameFire",
-            onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`
+            class: "col-6 col-sm-2",
+            onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
+            id: `${fireName[item]};`
         });
 
         let titleTo = $("<td>", {
-            class: "col-2"
+            class: "col-6 col-sm-2"
         }).append(fireTitle);
 
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            class: "col-2"
+            class: "col-sm-2",
+            id: "hidexs"
         });
 
         if(eachFireItem.find("description")[item]!== undefined){
             var fireDescription = $("<td>", {
                 text: eachFireItem.find("description")[item].textContent,
-                class: "col-6"
+                class: "col-sm-6",
+                id: "hidexs"
             });
         } else {
             var fireDescription = $("<td>", {
                 text: "No update description provided.  Please click on link to find out more.",
-                class: "col-6 text-justify"
+                class: "col-sm-6 text-justify",
+                id: "hidexs"
             }); 
         }
 
@@ -79,7 +83,7 @@ function useXML(response){
         });
 
         let linkTo = $("<td>", {
-            class: "col-2"
+            class: "col-6 col-sm-2"
         }).append(fireLink);
 
         let fireRow = $("<tr>", {
@@ -93,7 +97,7 @@ function useXML(response){
 }
 
 function totalFires(fires){
-    $("#fireCount").append($("<div>", {text: ` ${fires}`}));
+    $("#fireCount").append($("<h2>", {text: `Wildfires currently tracked in the U.S.:  ${fires}`}));
 }
 
 //Google Maps API
@@ -133,8 +137,8 @@ function createMarker(place, name, link) {
     const infoContent = `<a href="${link}" target="blank">${name}</a>`;
 
     google.maps.event.addListener(fireMarker, 'click', function() {
-    mapWindow.setContent(infoContent);
-    mapWindow.open(map, this);
+        mapWindow.setContent(infoContent);
+        mapWindow.open(map, this);
     }); 
 }
 
