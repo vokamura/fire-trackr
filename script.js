@@ -2,20 +2,25 @@ $(document).ready(startApp);
 
 function startApp(){
     // console.log("Start App");
-    getDataFromServer();
+    getDataFromInciwebServer();
+    // getDataFromTwitter();
 }
 
-function getDataFromServer() {   
-    //https://inciweb.nwcg.gov/feeds/
-    var myURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
-    var proxy = "https://cors.io/?";
-    var getData = {
-        url: proxy + myURL,
+//CalFire: http://www.fire.ca.gov/rss/rss.xml
+
+//Inciweb API
+//https://inciweb.nwcg.gov/feeds/
+
+function getDataFromInciwebServer() {   
+    let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
+    let proxy = "https://cors.io/?";
+    let getData = {
+        url: proxy + inciwebURL,
         method: "GET",
         dataType: "xml",
         success: useXML,
-        error: function(xhr, status){
-            console.log("Error", xhr, status);
+        error: function(){
+            console.log("Error");
         }
     }
     $.ajax(getData);
@@ -30,6 +35,7 @@ function useXML(response){
     console.log(response);
 
     let eachFireItem = $(response).find("item");
+    let fireCount = eachFireItem.length;
 
     for (let item=0; item < eachFireItem.length; item++){
 
@@ -40,17 +46,17 @@ function useXML(response){
 
         let fireTitle = $("<td>", {
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-1"
+            class: "col-2"
         });
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            class: "col-1"
+            class: "col-2"
         });
 
         if(eachFireItem.find("description")[item]!== undefined){
             var fireDescription = $("<td>", {
                 text: eachFireItem.find("description")[item].textContent,
-                class: "col-8"
+                class: "col-6"
             });
         } else {
             var fireDescription = $("<td>", {
@@ -61,7 +67,7 @@ function useXML(response){
 
         let fireLink = $("<a>", {
             href: eachFireItem.find("link")[item].textContent,
-            text: `Find out more about ${eachFireItem.find("title")[item].textContent}`,
+            text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
             target: "blank"
         });
 
@@ -73,22 +79,24 @@ function useXML(response){
             class: "row"
         }).append(fireTitle, firePublished, fireDescription, linkTo);
 
-        $("table").append(fireRow);
+        $("tbody").append(fireRow);
     } 
-    runMarkers();   
+    runMarkers(); 
+    totalFires(fireCount);  
 }
 
+function totalFires(fires){
+    $("#fireCount").append($("<div>", {text: `Wildfires currently in the U.S: ${fires}`}));
+}
+
+//Google Maps API
 let map;
 let mapWindow;
 
 function getMap(coords) {
-    $("#map").css("height", "50vh");
-    $("#map").css("max-width", "50vw");
-    $("#map").css("min-width", "50vw");
-
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(36.778259, -119.417931),
-        zoom: 6
+        zoom: 5
     });
     
     mapWindow = new google.maps.InfoWindow();    
@@ -120,4 +128,26 @@ function createMarker(place, name, link) {
       mapWindow.open(map, this);
     });
 }
+
+//Twitter API
+//https://github.com/m-coding/twitter-application-only-auth
+//https://developer.twitter.com/en/docs/basics/authentication/overview/application-only
+// function getDataFromTwitter(){
+//     let twitterURL = "https://api.twitter.com/1.1/search/tweets.json?";
+//     let getData = {
+//         url: twitterURL,
+//         method: "GET",
+//         dataType: "JSON",
+//         success: displayTweets,
+//         error: function(){
+//             console.log("Error");
+//         }
+//     }
+//     $.ajax(getData);
+// }
+
+// function displayTweets(){
+//     console.log("It worked!");
+// }
+
 

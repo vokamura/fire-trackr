@@ -1,3 +1,44 @@
-table tr {
-    margin-bottom: 35px;
+.upperContainer {
+    display: flex;
 }
+
+.upperContainerItems {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#map {
+    margin: 3% 20%;
+    min-height: 40vh;
+    min-width: 30vw;
+}
+
+.lowerContainer tr{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+table tr {
+    margin-bottom: 1%;
+}
+
+.scrollable{
+    display: block;
+    max-height: 50vh;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { ... }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { ... }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { ... }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }
