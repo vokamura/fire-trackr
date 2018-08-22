@@ -44,11 +44,17 @@ function useXML(response){
         fireName.push(eachFireItem.find("title")[item].textContent);
         linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
-        let fireTitle = $("<td>", {
+        let fireTitle = $("<a>", {
+            href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-2"
+            class: "col-2 text-center nameFire",
+            onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`
         });
-        
+
+        let titleTo = $("<td>", {
+            class: "col-2"
+        }).append(fireTitle);
+
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
             class: "col-2"
@@ -62,7 +68,7 @@ function useXML(response){
         } else {
             var fireDescription = $("<td>", {
                 text: "No update description provided.  Please click on link to find out more.",
-                class: "col-6"
+                class: "col-6 text-justify"
             }); 
         }
 
@@ -78,7 +84,7 @@ function useXML(response){
 
         let fireRow = $("<tr>", {
             class: "row"
-        }).append(fireTitle, firePublished, fireDescription, linkTo);
+        }).append(titleTo, firePublished, fireDescription, linkTo);
 
         $("tbody").append(fireRow);
     } 
@@ -87,7 +93,7 @@ function useXML(response){
 }
 
 function totalFires(fires){
-    $("#fireCount").append($("<div>", {text: `Wildfires currently in the U.S: ${fires}`}));
+    $("#fireCount").append($("<div>", {text: ` ${fires}`}));
 }
 
 //Google Maps API
@@ -98,7 +104,7 @@ function getMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(36.778259, -119.417931),
         zoom: 5,
-        streetViewControl: false
+        streetViewControl: false,
     });
     
     mapWindow = new google.maps.InfoWindow();    
@@ -117,19 +123,39 @@ function createMarker(place, name, link) {
       scaledSize: new google.maps.Size(30, 30)
       };
 
-    const infoContent = `<a href="${link}" target="blank">${name}</a>`
-
     const fireMarker = new google.maps.Marker({
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
       position: place,
     });
-      google.maps.event.addListener(fireMarker, 'click', function() {
-      mapWindow.setContent(infoContent);
-      mapWindow.open(map, this);
-    });
+
+    const infoContent = `<a href="${link}" target="blank">${name}</a>`;
+
+    google.maps.event.addListener(fireMarker, 'click', function() {
+    mapWindow.setContent(infoContent);
+    mapWindow.open(map, this);
+    }); 
 }
+
+function infoClicked(lat, long, name, link){
+    const image = {
+        url: "http://www.stickpng.com/assets/images/58469c62cef1014c0b5e47f6.png",
+        scaledSize: new google.maps.Size(30, 30)
+        };
+
+    let marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, long),
+        icon: image,
+        map: map
+    });
+
+    const infoContent = `<a href="${link}" target="blank">${name}</a>`;
+
+    mapWindow.setContent(infoContent);
+    mapWindow.open(map, marker);
+}
+
 
 //Twitter API
 //https://github.com/m-coding/twitter-application-only-auth
