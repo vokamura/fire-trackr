@@ -22,8 +22,9 @@ function getDataFromServer() {
     $.ajax(getData);
 }
 
-var latArray = [];
-var longArray = [];
+let latArray = [];
+let longArray = [];
+let fireName = [];
 
 function useXML(response){
     console.log(response);
@@ -38,6 +39,9 @@ function useXML(response){
         var fireLong = response.getElementsByTagName("geo:long")[item].textContent;
         longArray.push(fireLong);
 
+        var firePlace = eachFireItem.find("title")[item].textContent;
+        fireName.push(firePlace);
+
         var fireTitle = $("<td>", {
             text: eachFireItem.find("title")[item].textContent,
             class: "col-1"
@@ -47,7 +51,8 @@ function useXML(response){
             class: "col-1"
         });
         var fireDescription = $("<td>", {
-            text: eachFireItem.find("description")[item].textContent,
+            // text: eachFireItem.find("description")[item].textContent,
+            text: "hello",
             class: "col-8"
         });
 
@@ -61,137 +66,33 @@ function useXML(response){
         }).append(fireTitle, firePublished, fireDescription, fireLink);
 
         $("table").append(fireRow);
-    }    
+    } 
+    runMarkers();   
 }
 
 let map;
 let mapWindow;
 
-// function createMapElements() {
-    // const zipCodeLabel = $("<label>", {
-    //     class: "zipLayout",
-    //     text: "Please enter a 5 digit zip code: "
-    // });
-    // const zipCodeContainer = $("<div>", {
-    //     class: "zipContainer"
-    // });
-    // const zipCodeInput = $("<input>", {
-    //     id: "zipcode",
-    //     type: "text",
-    //     maxLength: "5",
-    //     placeholder: "Enter a zip code",
-    //     class: "zipInput"
-    // });
-    // const submitButton = $("<div>", {
-    //     id: "submit",
-    //     text: "Submit",
-    //     class: "zipInput"
-    // });
-    // const restartButton = $("<div>", {
-    //     class: "restartButton",
-    //     text: "",
-    //     on: {
-    //         click: startOver
-    //     }
-    // });
-    // $("#map").css("height", "50vh");
-    // $(restartButton).css("display", "block").css("margin", "auto");
-    // $(zipCodeLabel).append(zipCodeInput);
-    // $(zipCodeContainer).append(zipCodeInput, submitButton)
-//     $(".selectQ").prepend(zipCodeContainer);
-//     $(".mapLayout").append(restartButton);
-//     $("#submit").on("click", onlyNumbers);
-// }
-
-// function onlyNumbers() {
-//       const convertZip = $("#zipcode").val();
-//       if (isNaN(convertZip) || convertZip.length !==5) {
-//             alert("Please enter 5 numbers");
-//             return;
-//       } else {
-//             getZipCodeLatLon();
-//       }
-// }
-
-// function getZipCodeLatLon() {
-//       const zipCode = $("#zipcode").val();
-//       const apiKey = "AIzaSyA1IdZ7v8vp2cRJO5et2ynz2tEcllfxPtE";
-//       const settings = {
-//             url: `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`,
-//             method: "GET",
-//             dataType: "JSON",
-//             success: function(response) {
-//                   const mapCoordinates = response.results[0].geometry.location;
-//                   results = getMap(mapCoordinates);
-//             },
-//             failure: function(error) {
-//                   console.log("error");
-//             }
-//       }
-//       $.ajax(settings);
-// }
-
-// function getMap(coords) {
-//     $("#map").css("height", "50vh");
-//     $("#map").css("width", "30vw");
-//     let currentLocation = coords ? coords : {lat: 36.778259, lng: -119.417931};
-
-//     map = new google.maps.Map(document.getElementById("map"), {
-//         center: currentLocation,
-//         zoom: 6
-//     });
-    
-//     mapWindow = new google.maps.InfoWindow();
-//     const service = new google.maps.places.PlacesService(map);
-//     service.nearbySearch({
-//         location: currentLocation,
-//         radius: 1000000,
-//         type: ["bakery"],
-//         openNow: true,
-//         keyword: "bakery"
-//     }, mapCallback);
-// }
-
-// function mapCallback(mapResults, status) {
-//     if (status === google.maps.places.PlacesServiceStatus.OK) {
-//         for (let place = 0; place < mapResults.length; place++) {
-//             createMarker(mapResults[place]);
-//         }
-//     }
-// }
-
 function getMap(coords) {
     $("#map").css("height", "50vh");
-    $("#map").css("width", "30vw");
-    let currentLocation = coords ? coords : {lat: 36.778259, lng: -119.417931};
+    $("#map").css("max-width", "50vw");
+    $("#map").css("min-width", "50vw");
 
     map = new google.maps.Map(document.getElementById("map"), {
-        center: currentLocation,
+        center: new google.maps.LatLng(36.778259, -119.417931),
         zoom: 6
     });
     
-    mapWindow = new google.maps.InfoWindow();
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
-        location: currentLocation,
-        radius: 1000000,
-        type: ["bakery"],
-        openNow: true,
-        keyword: "bakery"
-    }, mapCallback);
+    mapWindow = new google.maps.InfoWindow();    
 }
 
-function mapCallback(mapResults, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (let place = 0; place < mapResults.length; place++) {
-            createMarker(mapResults[place]);
-        }
+function runMarkers(){
+    for (let place = 0; place < latArray.length; place++) {
+        let marker = new google.maps.LatLng(latArray[place], longArray[place]);
+        createMarker(marker, fireName[place]);
     }
 }
-
-
-function createMarker(place) {
-    // const placeLoc = place.geometry.location;
+function createMarker(place, name) {
 
     const image = {
       url: "http://www.stickpng.com/assets/images/58469c62cef1014c0b5e47f6.png",
@@ -202,10 +103,10 @@ function createMarker(place) {
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
-      position: place.geometry.location
+      position: place
     });
       google.maps.event.addListener(fireMarker, 'click', function() {
-      mapWindow.setContent(place.name);
+      mapWindow.setContent(name);
       mapWindow.open(map, this);
     });
 }
