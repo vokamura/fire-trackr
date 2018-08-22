@@ -61,7 +61,7 @@ function useXML(response){
         } else {
             var fireDescription = $("<td>", {
                 text: "No update description provided.  Please click on link to find out more.",
-                class: "col-8"
+                class: "col-6"
             }); 
         }
 
@@ -93,10 +93,11 @@ function totalFires(fires){
 let map;
 let mapWindow;
 
-function getMap(coords) {
+function getMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(36.778259, -119.417931),
-        zoom: 5
+        zoom: 5,
+        streetViewControl: false
     });
     
     mapWindow = new google.maps.InfoWindow();    
