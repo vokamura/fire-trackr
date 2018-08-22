@@ -2,6 +2,36 @@ body {
     text-align: left;
 }
 
+#wait {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#wait > div {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    font-size: 3rem;
+    z-index: 2;
+    /* min-width: 50%;
+    min-height: 50%; */
+    transform: translate(-50%, -50%);
+}
+
+ #wait > img {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    min-width: 50%;
+    min-height: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .navbar h1, .navbar a, .nav bar a:visited, .navbar a:hover {
     color: white;
     text-decoration: none;

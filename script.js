@@ -4,6 +4,12 @@ function startApp(){
     // console.log("Start App");
     getDataFromInciwebServer();
     // getDataFromTwitter();
+    $(document).ajaxStart(function(){
+        $("#wait").css("display", "block");
+    });
+    $(document).ajaxComplete(function(){
+        $("#wait").css("display", "none");
+    });
 }
 
 //CalFire: http://www.fire.ca.gov/rss/rss.xml
@@ -49,7 +55,6 @@ function useXML(response){
             text: eachFireItem.find("title")[item].textContent,
             class: "col-6 col-sm-2",
             onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
-            id: `${fireName[item]};`
         });
 
         let titleTo = $("<td>", {
@@ -139,6 +144,9 @@ function createMarker(place, name, link) {
     google.maps.event.addListener(fireMarker, 'click', function() {
         mapWindow.setContent(infoContent);
         mapWindow.open(map, this);
+
+        console.log(name);
+
     }); 
 }
 
@@ -151,7 +159,8 @@ function infoClicked(lat, long, name, link){
     let marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, long),
         icon: image,
-        map: map
+        map: map,
+    
     });
 
     const infoContent = `<a href="${link}" target="blank">${name}</a>`;
