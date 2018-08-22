@@ -1,8 +1,7 @@
 $(document).ready(startApp);
 
 function startApp(){
-    console.log("Start App");
-    // getMap();
+    // console.log("Start App");
     getDataFromServer();
 }
 
@@ -30,40 +29,47 @@ let linkToFireInfo = [];
 function useXML(response){
     console.log(response);
 
-    var eachFireItem = $(response).find("item");
+    let eachFireItem = $(response).find("item");
 
-    for (var item=0; item < eachFireItem.length; item++){
+    for (let item=0; item < eachFireItem.length; item++){
 
         latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
         longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
         fireName.push(eachFireItem.find("title")[item].textContent);
         linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
-        var fireTitle = $("<td>", {
+        let fireTitle = $("<td>", {
             text: eachFireItem.find("title")[item].textContent,
             class: "col-1"
         });
-        var firePublished = $("<td>", {
+        let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
             class: "col-1"
         });
-        var fireDescription = $("<td>", {
-            // text: eachFireItem.find("description")[item].textContent,
-            text: "hello",
-            class: "col-8"
-        });
 
-        var fireLink = $("<a>", {
+        if(eachFireItem.find("description")[item]!== undefined){
+            var fireDescription = $("<td>", {
+                text: eachFireItem.find("description")[item].textContent,
+                class: "col-8"
+            });
+        } else {
+            var fireDescription = $("<td>", {
+                text: "No update description provided.  Please click on link to find out more.",
+                class: "col-8"
+            }); 
+        }
+
+        let fireLink = $("<a>", {
             href: eachFireItem.find("link")[item].textContent,
             text: `Find out more about ${eachFireItem.find("title")[item].textContent}`,
             target: "blank"
         });
 
-        var linkTo = $("<td>", {
+        let linkTo = $("<td>", {
             class: "col-2"
         }).append(fireLink);
 
-        var fireRow = $("<tr>", {
+        let fireRow = $("<tr>", {
             class: "row"
         }).append(fireTitle, firePublished, fireDescription, linkTo);
 
