@@ -12,22 +12,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
-<body>
+<body class="bg-light">
 
-        <div class="container navbar navbar-dark bg-dark">
+        <div class="container-fluid navbar navbar-dark bg-dark">
             <h1 >Wildfire Logger</h1>
             <a href="about.html">About</a>
         </div>
 
-    <div class="upperContainer">
-        <div class="col-xs-12 upperContainerItems">
-            <div id="map"></div>
+        <div class="container-fluid">
+            <div id="fireCount" class="d-flex flex-row">Wildfires currently tracked in the U.S.: </div>
+            <div class="col-xs-12 d-flex">
+                <div id="map"></div>
+            </div>
         </div>
-        <div id="fireCount" class="upperContainerItems"></div>
-    </div>
 
-    <div class="lowerContainer container">
-        <table class="table table-bordered">
+    <div class="bg-white table-responsive">
+        <table class="table">
             <thead class="thead-dark">
                 <tr class="row">
                     <th class="col-2 text-center">Fire Name</th>
@@ -36,7 +36,7 @@
                     <th class="col-2 text-center">Link to more info</th>
                 </tr>
             </thead>
-            <tbody class="scrollable"></tbody>
+            <tbody class=""></tbody>
         </table>
     </div>
 
