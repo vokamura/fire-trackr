@@ -25,6 +25,7 @@ function getDataFromServer() {
 let latArray = [];
 let longArray = [];
 let fireName = [];
+let linkToFireInfo = [];
 
 function useXML(response){
     console.log(response);
@@ -33,14 +34,10 @@ function useXML(response){
 
     for (var item=0; item < eachFireItem.length; item++){
 
-        var fireLat = response.getElementsByTagName("geo:lat")[item].textContent;
-        latArray.push(fireLat);
-
-        var fireLong = response.getElementsByTagName("geo:long")[item].textContent;
-        longArray.push(fireLong);
-
-        var firePlace = eachFireItem.find("title")[item].textContent;
-        fireName.push(firePlace);
+        latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
+        longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
+        fireName.push(eachFireItem.find("title")[item].textContent);
+        linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
         var fireTitle = $("<td>", {
             text: eachFireItem.find("title")[item].textContent,
@@ -56,14 +53,19 @@ function useXML(response){
             class: "col-8"
         });
 
-        var fireLink = $("<td>", {
-            text: eachFireItem.find("link")[item].textContent,
-            class: "col-2"
+        var fireLink = $("<a>", {
+            href: eachFireItem.find("link")[item].textContent,
+            text: `Find out more about ${eachFireItem.find("title")[item].textContent}`,
+            target: "blank"
         });
+
+        var linkTo = $("<td>", {
+            class: "col-2"
+        }).append(fireLink);
 
         var fireRow = $("<tr>", {
             class: "row"
-        }).append(fireTitle, firePublished, fireDescription, fireLink);
+        }).append(fireTitle, firePublished, fireDescription, linkTo);
 
         $("table").append(fireRow);
     } 
@@ -89,24 +91,26 @@ function getMap(coords) {
 function runMarkers(){
     for (let place = 0; place < latArray.length; place++) {
         let marker = new google.maps.LatLng(latArray[place], longArray[place]);
-        createMarker(marker, fireName[place]);
+        createMarker(marker, fireName[place], linkToFireInfo[place]);
     }
 }
-function createMarker(place, name) {
+function createMarker(place, name, link) {
 
     const image = {
       url: "http://www.stickpng.com/assets/images/58469c62cef1014c0b5e47f6.png",
       scaledSize: new google.maps.Size(30, 30)
       };
 
+    const infoContent = `<a href="${link}" target="blank">${name}</a>`
+
     const fireMarker = new google.maps.Marker({
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
-      position: place
+      position: place,
     });
       google.maps.event.addListener(fireMarker, 'click', function() {
-      mapWindow.setContent(name);
+      mapWindow.setContent(infoContent);
       mapWindow.open(map, this);
     });
 }
