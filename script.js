@@ -48,6 +48,7 @@ function useXML(response){
             text: eachFireItem.find("title")[item].textContent,
             class: "col-2"
         });
+        
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
             class: "col-2"
