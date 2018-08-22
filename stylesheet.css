@@ -8,7 +8,7 @@ body {
     top: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
@@ -18,9 +18,9 @@ body {
     top: 20%;
     font-size: 3rem;
     z-index: 2;
-    /* min-width: 50%;
-    min-height: 50%; */
     transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
  #wait > img {
@@ -53,12 +53,20 @@ td a {
 .table-responsive {
     width: 95%;
     margin: auto;
+    width: 100%;
+    text-align: center;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 576px) { 
     #hidexs {
         display: none
+    }
+
+    #wait > div {
+        font-size: 45px;
+        width: 100%;
+        text-align: center;
     }
 }
 
