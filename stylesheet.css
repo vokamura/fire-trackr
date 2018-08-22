@@ -1,3 +1,10 @@
+h1 {
+    background-color: #212529;
+    color: white;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
 .upperContainer {
     display: flex;
 }
@@ -15,10 +22,9 @@
 }
 
 .lowerContainer tr{
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
-
 
 table tr {
     margin-bottom: 1%;
@@ -26,7 +32,7 @@ table tr {
 
 .scrollable{
     display: block;
-    max-height: 50vh;
+    max-height: 35vh;
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
@@ -41,4 +47,8 @@ table tr {
 @media (min-width: 992px) { ... }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { ... }
+@media (min-width: 1200px) {
+    .container{
+        max-width: 95%;
+    }
+}

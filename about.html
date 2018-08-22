@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Wildfire Logger</title>
+    <title>About</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXK1lum1zgLcoIodIKfbowX2Up4qLzwoU&libraries=places&callback=getMap"
         async defer></script>
@@ -13,32 +13,22 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-
     <div class="container">
-        <h1 class="text-center">Wildfire Logger</h1>
-        <a href="about.html">About</a>
+        <h1 class="text-center">About Wildfire Logger</h1>
+        <a href="index.html">Home</a>
     </div>
+    <div class="container text-center">
 
-    <div class="upperContainer">
-        <div class="col-xs-12 upperContainerItems">
-            <div id="map"></div>
-        </div>
-        <div id="fireCount" class="upperContainerItems"></div>
+        <p>Wildfire Logger shows information about wildfires in the U.S.</p>
+
+        <p>The site was built using: jQuery, AJAX, and Bootstrap4</p>
+
+        <ul><strong>The following APIs were used to gather data:</strong>
+            <li>InciWeb (Incident Information System)</li>
+            <li>Google Maps</li>
+            <li>Twitter</li>
+        </ul>
+
     </div>
-
-    <div class="lowerContainer container">
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr class="row">
-                    <th class="col-2 text-center">Fire Name</th>
-                    <th class="col-2 text-center">Updated Info</th>
-                    <th class="col-6 text-center">Fire  Description</th>
-                    <th class="col-2 text-center">Link to more info</th>
-                </tr>
-            </thead>
-            <tbody class="scrollable"></tbody>
-        </table>
-    </div>
-
 </body>
 </html>
