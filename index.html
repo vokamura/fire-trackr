@@ -15,25 +15,26 @@
 <body class="bg-light">
 
         <div class="container-fluid navbar navbar-dark bg-dark">
-            <h1 >Wildfire Logger</h1>
+            <a href="index.html"><h1 >Wildfire Logger</h1></a>
             <a href="about.html">About</a>
         </div>
 
-        <div class="container-fluid">
-            <div id="fireCount" class="d-flex flex-row">Wildfires currently tracked in the U.S.: </div>
-            <div class="col-xs-12 d-flex">
+        <div class="container-fluid d-flex flex-column">
+            <div id="fireCount" class="text-center"></div>
+            <div class="">
                 <div id="map"></div>
             </div>
+            <div class="text-center ">To find out more about the fire, click on a fire icon on the map above, or see the descriptions below.</div>
         </div>
 
     <div class="bg-white table-responsive">
         <table class="table">
             <thead class="thead-dark">
                 <tr class="row">
-                    <th class="col-2 text-center">Fire Name</th>
-                    <th class="col-2 text-center">Updated Info</th>
-                    <th class="col-6 text-center">Fire  Description</th>
-                    <th class="col-2 text-center">Link to more info</th>
+                    <th class="col-6 col-sm-2 text-center">Fire Name</th>
+                    <th class="col-sm-2 text-center" id="hidexs">Updated Info</th>
+                    <th class="col-sm-6 text-center" id="hidexs">Fire  Description</th>
+                    <th class="col-6 col-sm-2 text-center">Link for more info</th>
                 </tr>
             </thead>
             <tbody class=""></tbody>
