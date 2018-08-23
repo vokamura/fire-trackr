@@ -67,48 +67,54 @@ function useXML(response){
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-6 col-sm-2",
+            class: "col-4 col-sm-4",
             onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
             id: newNewName
         });
 
         let titleTo = $("<td>", {
-            class: "col-6 col-sm-2"
+            class: "col-4 col-sm-4"
         }).append(fireTitle);
 
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            class: "col-sm-2",
+            class: "col-sm-4",
             id: "hidexs"
         });
 
-        if(eachFireItem.find("description")[item]!== undefined){
-            var fireDescription = $("<td>", {
-                text: eachFireItem.find("description")[item].textContent,
-                class: "col-sm-6",
-                id: "hidexs"
-            });
-        } else {
-            var fireDescription = $("<td>", {
-                text: "No update description provided.  Please click on link to find out more.",
-                class: "col-sm-6 text-justify",
-                id: "hidexs"
-            }); 
-        }
-
-        let fireLink = $("<a>", {
-            href: eachFireItem.find("link")[item].textContent,
-            text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
-            target: "blank"
+        let descriptionLink = $("<td>", {
+            text: "Click to find out more",
+            onclick: "openDescModal",
+            class: "col-sm-4"
         });
 
-        let linkTo = $("<td>", {
-            class: "col-6 col-sm-2"
-        }).append(fireLink);
+        // if(eachFireItem.find("description")[item]!== undefined){
+        //     var fireDescription = $("<td>", {
+        //         text: eachFireItem.find("description")[item].textContent,
+        //         class: "col-sm-6",
+        //         id: "hidexs"
+        //     });
+        // } else {
+        //     var fireDescription = $("<td>", {
+        //         text: "No update description provided.  Please click on link to find out more.",
+        //         class: "col-sm-6 text-justify",
+        //         id: "hidexs"
+        //     }); 
+        // }
+
+        // let fireLink = $("<a>", {
+        //     href: eachFireItem.find("link")[item].textContent,
+        //     text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
+        //     target: "blank"
+        // });
+
+        // let linkTo = $("<td>", {
+        //     class: "col-6 col-sm-2"
+        // }).append(fireLink);
 
         let fireRow = $("<tr>", {
             class: "row"
-        }).append(titleTo, firePublished, fireDescription, linkTo);
+        }).append(titleTo, firePublished, descriptionLink);
 
         $("tbody").append(fireRow);
     } 

@@ -4,11 +4,11 @@ body {
 
 #wait {
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
+    left: 19%;
+    top: 14%;
+    width: 61vw;
+    height: 65vh;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
 }
 
@@ -19,7 +19,7 @@ body {
     font-size: 3rem;
     z-index: 2;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(0, 0, 0, 0.6); */
     color: white;
 }
 
@@ -46,14 +46,16 @@ td a,  a > p{
     margin: auto;
     min-height: 40vh;
     max-height: 40vh;
-    min-width: 70vw;
-    max-width: 70vw;
+    min-width: 50vw;
+    max-width: 50vw;
+    display: inline-block;
 }
 
 .tableAdj {
-    width: 90%;
+    /* width: 90%; */
     margin: auto;
     text-align: center;
+    display: inline-block;
 }
 
 .tableFixed tbody{
@@ -83,8 +85,7 @@ td a,  a > p{
     }
 
     #wait > div {
-        font-size: 45px;
-        width: 100%;
+        font-size: 35px;
         text-align: center;
     }
     .logoContainer{
@@ -98,7 +99,12 @@ td a,  a > p{
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-/* @media only screen and (min-width: 600px) {...}  */
+@media only screen and (min-width: 600px) {
+    #wait > div {
+        font-size: 35px;
+        text-align: center;
+    }
+} 
 
 /* Medium devices (landscape tablets, 768px and up) */
 /* @media only screen and (min-width: 768px) {...}  */
