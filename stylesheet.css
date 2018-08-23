@@ -2,13 +2,14 @@ body {
     text-align: left;
 }
 
+/* Loading Modal */
 #wait {
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
+    left: 19%;
+    top: 14%;
+    width: 61vw;
+    height: 65vh;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
 }
 
@@ -19,7 +20,6 @@ body {
     font-size: 3rem;
     z-index: 2;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
     color: white;
 }
 
@@ -32,6 +32,32 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.infoContainer{
+    display: flex;
+}
+
+/* Description Modal */
+#descriptionShadow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, .8);
+    visibility: hidden;
+}
+
+.descriptionBody {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    min-width: 50%;
+    min-height: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+/* Navbar */
 .navbar h1, .navbar a, .nav bar a:visited, .navbar a:hover {
     color: white;
     text-decoration: none;
@@ -44,24 +70,23 @@ td a,  a > p{
 
 #map {
     margin: auto;
-    min-height: 40vh;
-    max-height: 40vh;
-    min-width: 70vw;
-    max-width: 70vw;
+    min-height: 70vh;
+    max-height: 70vh;
+    min-width: 50vw;
+    max-width: 50vw;
+    position: fixed;
 }
 
 .tableAdj {
-    width: 90%;
-    margin: auto;
-    text-align: center;
+    width: 80%;
 }
 
 .tableFixed tbody{
     display: block;
-    max-height: 35vh;
-    overflow-y: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    overflow-x: hidden;
+    max-height: 60vh;
+    /* overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar; */
+    /* overflow-x: hidden; */
 }
 
 
@@ -83,8 +108,7 @@ td a,  a > p{
     }
 
     #wait > div {
-        font-size: 45px;
-        width: 100%;
+        font-size: 35px;
         text-align: center;
     }
     .logoContainer{
@@ -98,7 +122,12 @@ td a,  a > p{
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-/* @media only screen and (min-width: 600px) {...}  */
+@media only screen and (min-width: 600px) {
+    #wait > div {
+        font-size: 35px;
+        text-align: center;
+    }
+} 
 
 /* Medium devices (landscape tablets, 768px and up) */
 /* @media only screen and (min-width: 768px) {...}  */
