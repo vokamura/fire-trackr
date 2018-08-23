@@ -84,39 +84,41 @@ function useXML(response){
 
         let descriptionLink = $("<td>", {
             text: "Click to find out more",
-            onclick: "openDescModal",
+            onclick: "openDescModal()",
             class: "col-sm-4"
         });
-
-        // if(eachFireItem.find("description")[item]!== undefined){
-        //     var fireDescription = $("<td>", {
-        //         text: eachFireItem.find("description")[item].textContent,
-        //         class: "col-sm-6",
-        //         id: "hidexs"
-        //     });
-        // } else {
-        //     var fireDescription = $("<td>", {
-        //         text: "No update description provided.  Please click on link to find out more.",
-        //         class: "col-sm-6 text-justify",
-        //         id: "hidexs"
-        //     }); 
-        // }
-
-        // let fireLink = $("<a>", {
-        //     href: eachFireItem.find("link")[item].textContent,
-        //     text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
-        //     target: "blank"
-        // });
-
-        // let linkTo = $("<td>", {
-        //     class: "col-6 col-sm-2"
-        // }).append(fireLink);
 
         let fireRow = $("<tr>", {
             class: "row"
         }).append(titleTo, firePublished, descriptionLink);
 
         $("tbody").append(fireRow);
+
+        if(eachFireItem.find("description")[item]!== undefined){
+            var fireDescription = $("<td>", {
+                text: eachFireItem.find("description")[item].textContent,
+                // class: "col-sm-6",
+                id: "hidexs"
+            });
+        } else {
+            var fireDescription = $("<td>", {
+                text: "No update description provided.  Please click on link to find out more.",
+                // class: "col-sm-6 text-justify",
+                id: "hidexs"
+            }); 
+        }
+
+        let fireLink = $("<a>", {
+            href: eachFireItem.find("link")[item].textContent,
+            text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
+            target: "blank"
+        });
+
+        let linkTo = $("<td>", {
+            // class: "col-6 col-sm-2"
+        }).append(fireLink);
+        
+        $(".descriptionBody").append(fireDescription, linkTo);
     } 
     runMarkers(); 
     totalFires(fireCount);  
@@ -125,6 +127,15 @@ function useXML(response){
 function totalFires(fires){
     $("#fireCount").append($("<h2>", {text: `Wildfires currently tracked in the U.S.:  ${fires}`}));
 }
+
+function openDescModal(){
+    $("#descriptionShadow").css({"visibility": "visible"});
+}
+
+function closeDescModal(){
+    $("#descriptionShadow").css({"visibility": "hidden"});
+}
+
 
 //Google Maps API
 let map;
