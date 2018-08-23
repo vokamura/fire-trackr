@@ -32,6 +32,10 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.infoContainer{
+    display: flex;
+}
+
 /* Description Modal */
 #descriptionShadow {
     position: fixed;
@@ -66,26 +70,23 @@ td a,  a > p{
 
 #map {
     margin: auto;
-    min-height: 40vh;
-    max-height: 40vh;
+    min-height: 70vh;
+    max-height: 70vh;
     min-width: 50vw;
     max-width: 50vw;
-    display: inline-block;
+    position: fixed;
 }
 
 .tableAdj {
-    /* width: 90%; */
-    margin: auto;
-    text-align: center;
-    display: inline-block;
+    width: 80%;
 }
 
 .tableFixed tbody{
     display: block;
-    max-height: 35vh;
-    overflow-y: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    overflow-x: hidden;
+    max-height: 60vh;
+    /* overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar; */
+    /* overflow-x: hidden; */
 }
 
 
