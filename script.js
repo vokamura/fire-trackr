@@ -10,6 +10,17 @@ function startApp(){
     $(document).ajaxComplete(function(){
         $("#wait").css("display", "none");
     });
+    checkScrollBars();
+}
+function checkScrollBars (){
+    var b = $('body');
+    var normalw = 0;
+    var scrollw = 0;
+    if(b.prop('scrollHeight')>b.height()){
+        normalw = window.innerWidth;
+        scrollw = normalw - b.width();
+        $('tbody').css({marginRight:'-'+scrollw+'px'});
+    }
 }
 
 //CalFire: http://www.fire.ca.gov/rss/rss.xml
@@ -50,11 +61,15 @@ function useXML(response){
         fireName.push(eachFireItem.find("title")[item].textContent);
         linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
+        let newName = fireName[item];
+        let newNewName = newName.replace(/ /g,'');
+
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
             class: "col-6 col-sm-2",
             onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
+            id: newNewName
         });
 
         let titleTo = $("<td>", {
@@ -145,8 +160,9 @@ function createMarker(place, name, link) {
         mapWindow.setContent(infoContent);
         mapWindow.open(map, this);
 
-        console.log(name);
-
+        let newName = name;
+        let newNewName = newName.replace(/ /g,'');
+        window.location.href = `#${newNewName}`
     }); 
 }
 

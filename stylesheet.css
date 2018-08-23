@@ -56,6 +56,15 @@ td a,  a > p{
     text-align: center;
 }
 
+.tableFixed tbody{
+    display: block;
+    max-height: 35vh;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-x: hidden;
+}
+
+
 .logoContainer {
     display: flex;
     justify-content: center;
