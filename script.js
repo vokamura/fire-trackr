@@ -46,6 +46,8 @@ function getDataFromInciwebServer() {
 let latArray = [];
 let longArray = [];
 let fireName = [];
+let published = [];
+let description = [];
 let linkToFireInfo = [];
 
 function useXML(response){
@@ -59,6 +61,7 @@ function useXML(response){
         latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
         longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
         fireName.push(eachFireItem.find("title")[item].textContent);
+        published.push(eachFireItem.find("published")[item].textContent);
         linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
         let newName = fireName[item];
@@ -82,58 +85,66 @@ function useXML(response){
             id: "hidexs"
         });
 
-        let descriptionLink = $("<td>", {
-            text: "Click to find out more",
-            onclick: "openDescModal()",
-            class: "col-sm-4"
+        let descriptionLink = $("<a>", {
+            text: "Click for description",
+            class: "col-sm-4",
+            id: item
         });
+
+        let descriptionTo = $("<td>", {
+            class: "col-4 col-sm-4"
+        }).append(descriptionLink);
+
+        $(descriptionLink).bind("click", openDescModal);
 
         let fireRow = $("<tr>", {
             class: "row"
-        }).append(titleTo, firePublished, descriptionLink);
+        }).append(titleTo, firePublished, descriptionTo);
 
         $("tbody").append(fireRow);
 
         if(eachFireItem.find("description")[item]!== undefined){
-            var fireDescription = $("<td>", {
-                text: eachFireItem.find("description")[item].textContent,
-                // class: "col-sm-6",
-                id: "hidexs"
-            });
+            description.push(eachFireItem.find("description")[item].textContent);
         } else {
-            var fireDescription = $("<td>", {
-                text: "No update description provided.  Please click on link to find out more.",
-                // class: "col-sm-6 text-justify",
-                id: "hidexs"
-            }); 
+            description.push("No update description provided.  Please click on link to find out more.");
         }
-
-        let fireLink = $("<a>", {
-            href: eachFireItem.find("link")[item].textContent,
-            text: `Find out more about the ${eachFireItem.find("title")[item].textContent}`,
-            target: "blank"
-        });
-
-        let linkTo = $("<td>", {
-            // class: "col-6 col-sm-2"
-        }).append(fireLink);
-        
-        $(".descriptionBody").append(fireDescription, linkTo);
     } 
     runMarkers(); 
     totalFires(fireCount);  
 }
 
 function totalFires(fires){
-    $("#fireCount").append($("<h2>", {text: `Wildfires currently tracked in the U.S.:  ${fires}`}));
+    $("#fireCount").append($("<h2>", {text: `Wildfires (wildland fires) currently tracked in the United States:  ${fires}`}));
 }
 
-function openDescModal(){
+function openDescModal(e){
     $("#descriptionShadow").css({"visibility": "visible"});
+
+    let name = $("<h1>", {
+        text: fireName[e.target.id]
+    });
+
+    let lastPublished = $("<div>", {
+        text: `Description below last published: ${published[e.target.id]}`
+    })
+
+    let fireDescription = $("<div>", {
+        text: description[e.target.id],
+        // id: "hidexs"
+    });
+    
+    let fireLink = $("<a>", {
+        href: linkToFireInfo[e.target.id],
+        text: `Find out more about the ${fireName[e.target.id]}`,
+        target: "blank"
+    });
+    
+    $(".descriptionBody").append("<p>Click anywhere to close</p>", name, "<br>", lastPublished, "<br>",  fireDescription, "<br>", fireLink);
 }
 
 function closeDescModal(){
     $("#descriptionShadow").css({"visibility": "hidden"});
+    $(".descriptionBody").empty();
 }
 
 
