@@ -70,29 +70,29 @@ function useXML(response){
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-4 col-sm-4",
+            class: "col",
             onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
             id: newNewName
         });
 
         let titleTo = $("<td>", {
-            class: "col-4 col-sm-4"
+            class: "col"
         }).append(fireTitle);
 
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            class: "col-sm-4",
+            class: "col",
             id: "hidexs"
         });
 
         let descriptionLink = $("<a>", {
             text: "Click for description",
-            class: "col-sm-4",
+            class: "col",
             id: item
         });
 
         let descriptionTo = $("<td>", {
-            class: "col-4 col-sm-4"
+            class: "col"
         }).append(descriptionLink);
 
         $(descriptionLink).bind("click", openDescModal);
