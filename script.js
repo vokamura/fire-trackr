@@ -70,35 +70,30 @@ function useXML(response){
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            class: "col-4 col-sm-4",
             onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
             id: newNewName
         });
 
         let titleTo = $("<td>", {
-            class: "col-4 col-sm-4"
         }).append(fireTitle);
 
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            class: "col-sm-4",
             id: "hidexs"
         });
 
         let descriptionLink = $("<a>", {
+            href: "#",
             text: "Click for description",
-            class: "col-sm-4",
             id: item
         });
 
         let descriptionTo = $("<td>", {
-            class: "col-4 col-sm-4"
         }).append(descriptionLink);
 
         $(descriptionLink).bind("click", openDescModal);
 
         let fireRow = $("<tr>", {
-            class: "row"
         }).append(titleTo, firePublished, descriptionTo);
 
         $("tbody").append(fireRow);
@@ -114,7 +109,7 @@ function useXML(response){
 }
 
 function totalFires(fires){
-    $("#fireCount").append($("<h2>", {text: `Wildfires (wildland fires) currently tracked in the United States:  ${fires}`}));
+    $("#fireCount").append($("<h3>", {text: `Wildfires (wildland fires) currently tracked in the continental United States:  ${fires}`}));
 }
 
 function openDescModal(e){
@@ -130,7 +125,6 @@ function openDescModal(e){
 
     let fireDescription = $("<div>", {
         text: description[e.target.id],
-        // id: "hidexs"
     });
     
     let fireLink = $("<a>", {

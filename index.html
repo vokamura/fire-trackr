@@ -25,9 +25,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item active">
+            <!-- <li class="nav-item active">
                 <a class="nav-link" href="info.html">Fire Info</a>
-            </li>
+            </li> -->
             <li class="nav-item active">
                 <a class="nav-link" href="about.html">About</a>
             </li>
@@ -35,29 +35,30 @@
     </div>
 
     <div id="fireCount" class="text-center"></div>
-    <div class="text-center ">To find out more about the fire, click on a fire icon on the map, or see the list of fires.</div>
-
 
     <div class="infoContainer">
         <div id="map"></div>
 
-        <div class="bg-white table-responsive tableAdj">
-            <table class="table tableFixed">
+        <div class="tableScroll">
+            <table class="table table-hover">
                 <thead class="thead-dark">
-                    <tr class="row">
-                        <th class="col-sm-4">Fire Name</th>
-                        <th class="col-sm-4" id="hidexs">Info Last Updated</th>
-                        <th class="col-sm-4" id="hidexs">Description</th>
+                    <tr class="">
+                        <th class="">Fire Name</th>
+                        <th id="hidexs">Info Last Updated</th>
+                        <th class="">Description</th>
                     </tr>
                 </thead>
-                <tbody class=""></tbody>
+                <tbody class="bg-white"></tbody>
             </table>
         </div>
     </div>
+
+    <div id="instructions" class="text-center">To find out more about the fire, click on a fire icon on the map, or see the list of fires.</div>
 
     <div id="descriptionShadow" onclick="closeDescModal()">
         <div class="descriptionBody">
         </div>
     </div>
+
 </body>
 </html>
