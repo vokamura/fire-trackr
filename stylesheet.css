@@ -63,17 +63,6 @@
     color: red;
 }
 
-/* Navbar */
-.navbar h1, .navbar a, .nav bar a:visited, .navbar a:hover {
-    color: white;
-    text-decoration: none;
-}
-
-td a,  a > p{
-    font-weight: bold;
-    color: black;
-}
-
 /* Map */
 
 #map {
