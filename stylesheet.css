@@ -1,3 +1,7 @@
+body {
+    font-size: 14px;
+}
+
 /* Loading Modal */
 #wait {
     position: fixed;
@@ -32,6 +36,7 @@
 
 .infoContainer{
     display: flex;
+    width: 100vw;
 }
 
 /* Description Modal */
@@ -57,7 +62,7 @@
 }
 
 .descriptionBody > a {
-    font-size: 35px;
+    font-size: 25px;
     color: turquoise;
     font-weight: bold;
 }
@@ -66,37 +71,32 @@
     color: dodgerblue;
 }
 
+#instruction{
+    margin: 2%;
+}
+
 /* Map */
 
 #map {
     margin: 1%;
-    min-height: 70vh;
-    max-height: 70vh;
-    min-width: 50vw;
-    max-width: 50vw;
+    width: 50%;
     position: fixed;
 }
 
 /* Table */
 
-.tableAdj {
-    /* width: 80%; */
-    /* margin: 1%; */
-}
-
-.tableAdj a {
-    color: black;
-    font-weight: bold;
-}
-
-.tableFixed tbody{
-    /* display: block;
-    max-height: 60vh;
+.tableScroll{
+    margin: 1%;
+    display: block;
+    max-height: 70vh;
     overflow-y: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar; */
-    /* overflow-x: hidden; */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    width: 50%
 }
 
+table a {
+    color: purple;
+}
 
 /* Social Media */
 
@@ -113,10 +113,6 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 576px) { 
-    #hidexs {
-        display: none
-    }
-
     #wait > div {
         font-size: 35px;
         text-align: center;
@@ -129,6 +125,22 @@
     .logoImage {
         margin: 0 auto;
     }
+    .infoContainer{
+        display: block;
+    }
+    #map {
+        height: 40vh;
+        width: 96%;
+    }
+    .tableScroll {
+        width: 96%;
+        /* height: 35vh; */
+    }
+
+}
+
+@media only screen and (max-width: 800) {
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
