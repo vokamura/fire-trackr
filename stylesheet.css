@@ -75,6 +75,8 @@ body {
     margin: 2%;
 }
 
+
+
 /* Map */
 
 #map {
@@ -95,7 +97,8 @@ body {
 }
 
 table a {
-    color: purple;
+    color: black;
+    font-weight: bold;
 }
 
 /* Social Media */
@@ -109,6 +112,12 @@ table a {
 .logoImage {
     max-height: 15vh;
     margin: 25px;
+}
+
+@media only screen and (max-width: 425px){
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -125,9 +134,19 @@ table a {
     .logoImage {
         margin: 0 auto;
     }
-    .infoContainer{
-        display: block;
+    h3 {
+        font-size: 1rem;
     }
+}
+
+@media only screen and (max-width: 599px) { 
+    #wait > div {
+        font-size: 25px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 800px) {
     #map {
         height: 40vh;
         width: 96%;
@@ -136,10 +155,9 @@ table a {
         width: 96%;
         /* height: 35vh; */
     }
-
-}
-
-@media only screen and (max-width: 800) {
+    .infoContainer{
+        display: block;
+    }
 
 }
 
