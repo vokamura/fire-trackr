@@ -10,18 +10,18 @@ function startApp(){
     $(document).ajaxComplete(function(){
         $("#wait").css("display", "none");
     });
-    checkScrollBars();
+    // checkScrollBars();
 }
-function checkScrollBars (){
-    var b = $('body');
-    var normalw = 0;
-    var scrollw = 0;
-    if(b.prop('scrollHeight')>b.height()){
-        normalw = window.innerWidth;
-        scrollw = normalw - b.width();
-        $('tbody').css({marginRight:'-'+scrollw+'px'});
-    }
-}
+// function checkScrollBars (){
+//     var b = $('body');
+//     var normalw = 0;
+//     var scrollw = 0;
+//     if(b.prop('scrollHeight')>b.height()){
+//         normalw = window.innerWidth;
+//         scrollw = normalw - b.width();
+//         $('tbody').css({marginRight:'-'+scrollw+'px'});
+//     }
+// }
 
 //CalFire: http://www.fire.ca.gov/rss/rss.xml
 
@@ -114,6 +114,7 @@ function totalFires(fires){
 
 function openDescModal(e){
     $("#descriptionShadow").css({"visibility": "visible"});
+    $(".descriptionBody").addClass("descriptionAnimation");
 
     let name = $("<h1>", {
         text: fireName[e.target.id]
@@ -139,6 +140,7 @@ function openDescModal(e){
 function closeDescModal(){
     $("#descriptionShadow").css({"visibility": "hidden"});
     $(".descriptionBody").empty();
+    $(".descriptionBody").removeClass("descriptionAnimation");
 }
 
 
