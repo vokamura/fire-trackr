@@ -59,7 +59,27 @@ body {
     background-color: rgba(0,0,0, .9);
     transform: translate(-50%, -50%);
     padding: 5%;
+    
 }
+
+.descriptionAnimation{
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-100vh; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-100vh; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
 
 .descriptionBody > a {
     font-size: 25px;
@@ -74,8 +94,6 @@ body {
 #instruction{
     margin: 2%;
 }
-
-
 
 /* Map */
 
