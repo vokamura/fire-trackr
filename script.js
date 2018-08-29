@@ -10,18 +10,7 @@ function startApp(){
     $(document).ajaxComplete(function(){
         $("#wait").css("display", "none");
     });
-    // checkScrollBars();
 }
-// function checkScrollBars (){
-//     var b = $('body');
-//     var normalw = 0;
-//     var scrollw = 0;
-//     if(b.prop('scrollHeight')>b.height()){
-//         normalw = window.innerWidth;
-//         scrollw = normalw - b.width();
-//         $('tbody').css({marginRight:'-'+scrollw+'px'});
-//     }
-// }
 
 //CalFire: http://www.fire.ca.gov/rss/rss.xml
 
