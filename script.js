@@ -125,7 +125,7 @@ function openDescModal(e){
     })
 
     let fireDescription = $("<div>", {
-        text: description[e.target.id],
+        text: description[e.target.id]
     });
     
     let fireLink = $("<a>", {
