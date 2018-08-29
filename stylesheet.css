@@ -59,6 +59,7 @@ body {
     background-color: rgba(0,0,0, .9);
     transform: translate(-50%, -50%);
     padding: 5%;
+    overflow-y:auto
     
 }
 
@@ -132,6 +133,10 @@ table a {
     margin: 25px;
 }
 
+.logoContainer a {
+    color: black
+}
+
 @media only screen and (max-width: 425px){
     h1 {
         font-size: 2rem;
@@ -155,6 +160,7 @@ table a {
     h3 {
         font-size: 1rem;
     }
+ 
 }
 
 @media only screen and (max-width: 599px) { 
@@ -176,7 +182,9 @@ table a {
     .infoContainer{
         display: block;
     }
-
+    .descriptionBody{
+        max-height: 50%;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
