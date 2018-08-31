@@ -176,6 +176,7 @@ function createMarker(place, name, link) {
         let newName = name;
         let newNewName = newName.replace(/ /g,'');
         window.location.href = `#${newNewName}`
+        console.log($("#newNewName").parent());
     }); 
 }
 
