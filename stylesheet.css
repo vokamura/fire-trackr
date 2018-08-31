@@ -34,8 +34,8 @@ h3 {
     position: fixed;
     left: 50%;
     top: 50%;
-    min-width: 30%;
-    min-height: 30%;
+    /* min-width: 30%;
+    min-height: 30%; */
     max-width: 50%;
     max-height: 50%;
     transform: translate(-50%, -50%);
@@ -174,6 +174,11 @@ table a {
     #wait > div {
         font-size: 25px;
         text-align: center;
+        top: 33%;
+    }
+    #wait {
+        top: 22%;
+        height: 50vh;
     }
 }
 
