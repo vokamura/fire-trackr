@@ -91,13 +91,14 @@ h3 {
 
 
 .descriptionBody > a {
-    font-size: 25px;
-    color: turquoise;
+    font-size: 1.5rem;
+    color: dodgerblue;
     font-weight: bold;
 }
 
 .descriptionBody > p {
-    color: dodgerblue;
+    color: lightgreen;
+    font-size: 1.25rem;
 }
 
 #instruction{
@@ -196,7 +197,7 @@ table a {
         display: block;
     }
     .descriptionBody{
-        max-height: 50%;
+        max-height: 90%;
     }
 }
 
