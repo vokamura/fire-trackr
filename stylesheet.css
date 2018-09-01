@@ -199,6 +199,10 @@ table a {
         height: 40vh;
         width: 96%;
     }
+    .tableContainer{
+        width: 100vw;
+        margin: 1%;
+    }
     .tableScroll {
         width: 96%;
         /* height: 35vh; */
