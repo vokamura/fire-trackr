@@ -115,13 +115,23 @@ h3 {
 
 /* Table */
 
-.tableScroll{
+.tableContainer {
     margin: 1%;
-    display: block;
-    max-height: 70vh;
+    width: 50vw;
+    height: 70vh;
+}
+table tbody, table thead {
+    display: block
+}
+
+table tbody {
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    width: 50%
+    height: 60vh;
+}
+
+th, td {
+    width: 30%;
 }
 
 table a {
@@ -188,6 +198,10 @@ table a {
     #map {
         height: 40vh;
         width: 96%;
+    }
+    .tableContainer{
+        width: 100vw;
+        margin: 1%;
     }
     .tableScroll {
         width: 96%;
