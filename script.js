@@ -40,7 +40,7 @@ let description = [];
 let linkToFireInfo = [];
 
 function useXML(response){
-    console.log(response);
+    // console.log(response);
 
     let eachFireItem = $(response).find("item");
     let fireCount = eachFireItem.length;
@@ -83,6 +83,7 @@ function useXML(response){
         $(descriptionLink).bind("click", openDescModal);
 
         let fireRow = $("<tr>", {
+            id: `${newNewName}row`
         }).append(titleTo, firePublished, descriptionTo);
 
         $("tbody").append(fireRow);
@@ -173,10 +174,14 @@ function createMarker(place, name, link) {
         mapWindow.setContent(infoContent);
         mapWindow.open(map, this);
 
-        let newName = name;
-        let newNewName = newName.replace(/ /g,'');
-        window.location.href = `#${newNewName}`
-        console.log($("#newNewName").parent());
+        let newName = name.replace(/ /g,'');
+        window.location.href = `#${newName}`
+
+        //When fire icon is clicked, highlight row for a number of seconds in table
+        document.getElementById(`${newName}row`).classList.add("rowColor");
+        setTimeout(function(){
+            document.getElementById(`${newName}row`).classList.remove("rowColor");
+        }, 2000);
     }); 
 }
 
@@ -189,7 +194,8 @@ function infoClicked(lat, long, name, link){
     let marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, long),
         icon: image,
-        map: map,
+        animation: google.maps.Animation.DROP,
+        map: map
     
     });
 
@@ -197,6 +203,7 @@ function infoClicked(lat, long, name, link){
 
     mapWindow.setContent(infoContent);
     mapWindow.open(map, marker);
+
 }
 
 
