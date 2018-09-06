@@ -9,7 +9,7 @@ h3 {
     margin-top: 2%;
 }
 
-/* Loading Modal */
+/* LOADING MODAL*/
 #wait {
     position: fixed;
     left: 17%;
@@ -46,7 +46,7 @@ h3 {
     width: 100vw;
 }
 
-/* Description Modal */
+/* DESCRIPTION Modal */
 #descriptionShadow {
     position: fixed;
     left: 0;
@@ -68,7 +68,6 @@ h3 {
     transform: translate(-50%, -50%);
     padding: 5%;
     overflow-y:auto
-    
 }
 
 /* .descriptionAnimation{
@@ -88,8 +87,6 @@ h3 {
     to {top:0; opacity:1}
 } */
 
-
-
 .descriptionBody > a {
     font-size: 1.5rem;
     color: dodgerblue;
@@ -105,7 +102,7 @@ h3 {
     margin: 2%;
 }
 
-/* Map */
+/* MAP */
 
 #map {
     margin: 1%;
@@ -113,7 +110,7 @@ h3 {
     position: fixed;
 }
 
-/* Table */
+/* DATA TABLE */
 
 .tableContainer {
     margin: 1%;
@@ -139,7 +136,11 @@ table a {
     font-weight: bold;
 }
 
-/* Social Media */
+.rowColor{
+    background-color: orange;
+}
+
+/* SOCIAL MEDIA */
 
 .logoContainer {
     display: flex;
