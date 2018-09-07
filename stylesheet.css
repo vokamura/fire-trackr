@@ -112,8 +112,8 @@ h3 {
 
 .tableContainer {
     margin: 1%;
-    width: 50vw;
-    height: 70vh;
+    width: 50%;
+    /* height: 70vh; */
 }
 table tbody, table thead {
     display: block
