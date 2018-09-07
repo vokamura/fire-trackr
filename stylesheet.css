@@ -1,5 +1,7 @@
 body {
     font-size: 14px;
+    width: 100vw;
+    height: 100vh;
 }
 
 h1 {
@@ -14,8 +16,8 @@ h3 {
     position: fixed;
     left: 17%;
     top: 15%;
-    width: 65vw;
-    height: 65vh;
+    width: 65%;
+    height: 65%;
     background-color: rgba(0, 0, 0, 1);
     z-index: 1;
 }
@@ -41,7 +43,8 @@ h3 {
 
 .infoContainer{
     display: flex;
-    width: 100vw;
+    width: 100%;
+    /* used width: 100vw */
 }
 
 /* DESCRIPTION Modal */
@@ -49,8 +52,9 @@ h3 {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    /* used width: 100vw */
+    height: 100%;
     visibility: hidden;
     cursor: pointer;
 }
@@ -65,7 +69,8 @@ h3 {
     background-color: rgba(0,0,0, .9);
     transform: translate(-50%, -50%);
     padding: 5%;
-    overflow-y:auto
+    overflow-y:auto;
+    width: 94%;
 }
 
 /* .descriptionAnimation{
@@ -105,7 +110,6 @@ h3 {
 #map {
     margin: 1%;
     width: 50%;
-    position: fixed;
 }
 
 /* DATA TABLE */
@@ -113,7 +117,6 @@ h3 {
 .tableContainer {
     margin: 1%;
     width: 50%;
-    /* height: 70vh; */
 }
 table tbody, table thead {
     display: block
@@ -189,7 +192,7 @@ table a {
     }
     #wait {
         top: 22%;
-        height: 50vh;
+        height: 50%;
     }
 }
 
@@ -199,11 +202,11 @@ table a {
         width: 96%;
     }
     .tableContainer{
-        width: 100vw;
+        width: 100%;
         margin: 1%;
     }
     .tableScroll {
-        width: 96%;
+        width: 100%;
     }
     .infoContainer{
         display: block;
