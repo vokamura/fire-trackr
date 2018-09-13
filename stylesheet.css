@@ -125,7 +125,19 @@ table tbody, table thead {
 table tbody {
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    height: 60vh;
+    height: 60vmin;
+}
+
+@media only screen and (max-height: 500px) {
+    table tbody {
+        height: 40vmin !important;
+    }
+}
+
+@media only screen and (max-height: 610px) {
+    table tbody {
+        height: 50vmin;
+    }
 }
 
 th, td {
@@ -157,6 +169,8 @@ table a {
 .logoContainer a {
     color: black
 }
+
+
 
 @media only screen and (max-width: 425px){
     h1 {
