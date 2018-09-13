@@ -258,7 +258,7 @@ table a {
     }
 }
 
-@media only screen and (max-height: 770px) and (max-width: 800px) {
+@media only screen and (min-height: 720px) and (max-width: 800px) {
     #map {
         height: 35vh;
     }
@@ -267,11 +267,31 @@ table a {
     }
 }
 
-/* @media only screen and (min-height: 600px) and (min-width: 800px) {
+@media only screen and (max-height: 720px) and (max-width: 800px) {
+    #map {
+        height: 30vh;
+    }
+    table tbody {
+        height: 25vmin !important;
+    }
+}
+
+@media only screen and (max-height: 587px) and (max-width: 800px) {
     #map {
         height: 25vh;
     }
     table tbody {
         height: 20vmin !important;
     }
-} */
+}
+
+@media only screen and (max-height: 502px) and (max-width: 800px) {
+    #map {
+        height: 20vh;
+    }
+    table tbody {
+        height: 15vmin !important;
+    }
+}
+
+/* 737 and 801 width is still off */

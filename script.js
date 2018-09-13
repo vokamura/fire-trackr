@@ -74,7 +74,7 @@ function useXML(response){
         let descriptionLink = $("<a>", {
             href: "#",
             text: "Click for description",
-            id: item
+            id: item,
         });
 
         let descriptionTo = $("<td>", {
