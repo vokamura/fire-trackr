@@ -250,11 +250,11 @@ table a {
     }
 }
 
-@media only screen and (min-height: 600px) and (min-width: 800px) {
-    /* #map {
+/* @media only screen and (min-height: 600px) and (min-width: 800px) {
+    #map {
         height: 25vh;
-    } */
+    }
     table tbody {
         height: 20vmin !important;
     }
-}
+} */
