@@ -7,6 +7,13 @@ body {
 h1 {
     margin-top: 2%;
 }
+
+@media only screen and (max-width: 425px){
+    h1 {
+        font-size: 2rem;
+    }
+}
+
 h3 {
     margin-top: 2%;
 }
@@ -40,6 +47,25 @@ h3 {
     max-height: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media only screen and (max-width: 599px) { 
+    #wait > div {
+        font-size: 25px;
+        text-align: center;
+        top: 33%;
+    }
+    #wait {
+        top: 22%;
+        height: 50%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #wait > div {
+        font-size: 35px;
+        text-align: center;
+    }
+} 
 
 .infoContainer{
     display: flex;
@@ -128,13 +154,13 @@ table tbody {
     height: 60vmin;
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (min-width: 800px) and (max-height: 500px) {
     table tbody {
         height: 40vmin !important;
     }
 }
 
-@media only screen and (max-height: 610px) {
+@media only screen and (min-width: 800px) and (max-height: 610px) {
     table tbody {
         height: 50vmin;
     }
@@ -172,12 +198,6 @@ table a {
 
 
 
-@media only screen and (max-width: 425px){
-    h1 {
-        font-size: 2rem;
-    }
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 576px) { 
     #wait > div {
@@ -198,26 +218,17 @@ table a {
 
 }
 
-@media only screen and (max-width: 599px) { 
-    #wait > div {
-        font-size: 25px;
-        text-align: center;
-        top: 33%;
-    }
-    #wait {
-        top: 22%;
-        height: 50%;
-    }
-}
-
 @media only screen and (max-width: 800px) {
     #map {
-        height: 40vh;
+        height: 35vh;
         width: 96%;
     }
     .tableContainer{
-        width: 100%;
+        width: 96%;
         margin: 1%;
+    }
+    table tbody {
+        height: 30vmin !important;
     }
     .tableScroll {
         width: 100%;
@@ -230,19 +241,20 @@ table a {
     }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    #wait > div {
-        font-size: 35px;
-        text-align: center;
+@media only screen and (max-height: 770px) and (max-width: 800px) {
+    #map {
+        height: 35vh;
     }
-} 
+    table tbody {
+        height: 30vmin !important;
+    }
+}
 
-/* Medium devices (landscape tablets, 768px and up) */
-/* @media only screen and (min-width: 768px) {...}  */
-
-/* Large devices (laptops/desktops, 992px and up) */
-/* @media only screen and (min-width: 992px) {...}  */
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-/* @media only screen and (min-width: 1200px) {...} */
+@media only screen and (min-height: 600px) and (min-width: 800px) {
+    /* #map {
+        height: 25vh;
+    } */
+    table tbody {
+        height: 20vmin !important;
+    }
+}
