@@ -27,7 +27,7 @@ function getDataFromInciwebServer() {
         dataType: "xml",
         success: useXML,
         error: function(){
-            console.log("Error: no internet connection");
+            console.log("Error: Inciweb is down");
             $.ajax({
                 url: proxy + backupURL,
                 method: "GET",
@@ -35,7 +35,7 @@ function getDataFromInciwebServer() {
                 success: useXML,
                 async: true,
                 error: function(error){
-                    console.log("Failed");
+                    console.log("Offline response failed");
                     console.log(error.responseText);
                 }
             });
