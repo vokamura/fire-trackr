@@ -26,13 +26,14 @@ h3 {
     top: 15%;
     width: 65%;
     height: 65%;
-    /* background-color: rgba(0, 0, 0, 1); */
     background: #ffcf6e; /* Old browsers */
     background: -moz-linear-gradient(top, #ffcf6e 0%, #feaa6a 29%, #fea46a 60%, #fd6963 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, #ffcf6e 0%,#feaa6a 29%,#fea46a 60%,#fd6963 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #ffcf6e 0%,#feaa6a 29%,#fea46a 60%,#fd6963 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcf6e', endColorstr='#fd6963',GradientType=0 ); /* IE6-9 */
     z-index: 1;
+    border: 3px solid #fd6963;
+    box-sizing: border-box;
 }
 
 #wait > div {
@@ -113,6 +114,8 @@ h3 {
     padding: 5%;
     overflow-y:auto;
     width: 94%;
+    border: 3px solid #fd6963;
+    box-sizing: border-box;
 }
 
 /* .descriptionAnimation{
