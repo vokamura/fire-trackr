@@ -19,6 +19,7 @@ function startApp(){
 
 function getDataFromInciwebServer() {   
     let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
+    let backupURL = "http://www.vikkiokamura.com/firetrackr/backup.xml";
     let proxy = "https://cors.io/?";
     let getData = {
         url: proxy + inciwebURL,
@@ -28,12 +29,14 @@ function getDataFromInciwebServer() {
         error: function(){
             console.log("Error: no internet connection");
             $.ajax({
-                url: "backup.xml",
+                url: proxy + backupURL,
                 method: "GET",
                 dataType: "xml",
                 success: useXML,
-                error: function(){
+                async: true,
+                error: function(error){
                     console.log("Failed");
+                    console.log(error.responseText);
                 }
             });
         }
