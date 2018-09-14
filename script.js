@@ -3,7 +3,6 @@ $(document).ready(startApp);
 function startApp(){
     // console.log("Start App");
     getDataFromInciwebServer();
-    // getDataFromTwitter();
     $(document).ajaxStart(function(){
         $("#wait").css("display", "block");
     });
@@ -16,7 +15,6 @@ function startApp(){
 
 //Inciweb API
 //https://inciweb.nwcg.gov/feeds/
-
 function getDataFromInciwebServer() {   
     let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
     let backupURL = "http://www.vikkiokamura.com/firetrackr/backup.xml";
@@ -34,9 +32,8 @@ function getDataFromInciwebServer() {
                 dataType: "xml",
                 success: useXML,
                 async: true,
-                error: function(error){
-                    console.log("Offline response failed");
-                    console.log(error.responseText);
+                error: function(){
+                    console.log("Error: Offline response failed");
                 }
             });
         }
@@ -52,7 +49,6 @@ let description = [];
 let linkToFireInfo = [];
 
 function useXML(response){
-    // console.log(response);
 
     let eachFireItem = $(response).find("item");
     let fireCount = eachFireItem.length;
