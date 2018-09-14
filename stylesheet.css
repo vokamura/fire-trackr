@@ -5,12 +5,12 @@ body {
     color: #555555
 }
 
-h1 {
+descriptionBody h1 {
     margin-top: 2%;
 }
 
 @media only screen and (max-width: 425px){
-    h1 {
+    descriptionBody h1 {
         font-size: 2rem;
     }
 }
@@ -35,9 +35,9 @@ h3 {
     background: -webkit-linear-gradient(top, #ffcf6e 0%,#feaa6a 29%,#fea46a 60%,#fd6963 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #ffcf6e 0%,#feaa6a 29%,#fea46a 60%,#fd6963 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcf6e', endColorstr='#fd6963',GradientType=0 ); /* IE6-9 */
-    z-index: 1;
     border: 3px solid #fd6963;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 #wait > div {
@@ -220,8 +220,8 @@ table a {
     position: fixed;
     left: 50%;
     top: 50%;
-    min-width: 70%;
-    min-height: 70%;
+    min-width: 60%;
+    height: 70%;
     color: white;
     background-color: rgba(0,0,0, .9);
     transform: translate(-50%, -50%);
@@ -238,25 +238,24 @@ table a {
 }
 
 .logoImage {
-    max-height: 15vh;
+    width: 70px;
     margin: 25px;
 }
 
 .logoContainer a {
-    color: #555555;
+    color: white;
 }
 
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 576px) { 
     #wait > div {
         font-size: 35px;
         text-align: center;
     }
-    .logoContainer{
+    /* .logoContainer{
         flex-direction: column;
         margin: 0 auto;
         align-items: center;
-    }
+    } */
     .logoImage {
         margin: 0 auto;
     }
