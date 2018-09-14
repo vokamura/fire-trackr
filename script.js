@@ -26,7 +26,16 @@ function getDataFromInciwebServer() {
         dataType: "xml",
         success: useXML,
         error: function(){
-            console.log("Error");
+            console.log("Error: no internet connection");
+            $.ajax({
+                url: "backup.xml",
+                method: "GET",
+                dataType: "xml",
+                success: useXML,
+                error: function(){
+                    console.log("Failed");
+                }
+            });
         }
     }
     $.ajax(getData);
@@ -133,7 +142,6 @@ function closeDescModal(){
     $(".descriptionBody").removeClass("descriptionAnimation");
 }
 
-
 //Google Maps API
 let map;
 let mapWindow;
@@ -205,27 +213,4 @@ function infoClicked(lat, long, name, link){
     mapWindow.open(map, marker);
 
 }
-
-
-//Twitter API
-//https://github.com/m-coding/twitter-application-only-auth
-//https://developer.twitter.com/en/docs/basics/authentication/overview/application-only
-// function getDataFromTwitter(){
-//     let twitterURL = "https://api.twitter.com/1.1/search/tweets.json?";
-//     let getData = {
-//         url: twitterURL,
-//         method: "GET",
-//         dataType: "JSON",
-//         success: displayTweets,
-//         error: function(){
-//             console.log("Error");
-//         }
-//     }
-//     $.ajax(getData);
-// }
-
-// function displayTweets(){
-//     console.log("It worked!");
-// }
-
 
