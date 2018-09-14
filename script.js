@@ -76,16 +76,18 @@ function useXML(response){
 
         let firePublished = $("<td>", {
             text: eachFireItem.find("published")[item].textContent,
-            id: "hidexs"
+            id: "hidexs",
+            class: "text-center"
         });
 
         let descriptionLink = $("<a>", {
             href: "#",
             text: "Click for description",
-            id: item,
+            id: item
         });
 
         let descriptionTo = $("<td>", {
+            class: "text-center"
         }).append(descriptionLink);
 
         $(descriptionLink).bind("click", openDescModal);
