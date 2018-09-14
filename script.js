@@ -52,9 +52,9 @@ function useXML(response){
 
     let eachFireItem = $(response).find("item");
     let fireCount = eachFireItem.length;
-
+    console.log(eachFireItem);
     for (let item=0; item < eachFireItem.length; item++){
-
+        
         latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
         longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
         fireName.push(eachFireItem.find("title")[item].textContent);
@@ -163,6 +163,8 @@ function runMarkers(){
         createMarker(marker, fireName[place], linkToFireInfo[place]);
     }
 }
+
+//Create initial wildfire markers
 function createMarker(place, name, link) {
 
     const image = {
@@ -194,6 +196,7 @@ function createMarker(place, name, link) {
     }); 
 }
 
+//When a fire in the able is clicked, it takes you to where it is on the map
 function infoClicked(lat, long, name, link){
     const image = {
         url: "http://www.stickpng.com/assets/images/58469c62cef1014c0b5e47f6.png",
@@ -212,6 +215,5 @@ function infoClicked(lat, long, name, link){
 
     mapWindow.setContent(infoContent);
     mapWindow.open(map, marker);
-
 }
 
