@@ -217,3 +217,34 @@ function infoClicked(lat, long, name, link){
     mapWindow.open(map, marker);
 }
 
+// About Modal
+
+function openAboutModal(e){
+    console.log("open");
+    $("#aboutShadow").css({"visibility": "visible"});
+    // $(".descriptionBody").addClass("descriptionAnimation");
+
+    // let name = $("<h1>", {
+    //     text: fireName[e.target.id]
+    // });
+
+    // let lastPublished = $("<div>", {
+    //     text: `Description below last published: ${published[e.target.id]}`
+    // })
+
+    // let fireDescription = $("<div>", {
+    //     text: description[e.target.id]
+    // });
+    
+    // let fireLink = $("<a>", {
+    //     href: linkToFireInfo[e.target.id],
+    //     text: `Find out more about the ${fireName[e.target.id]}`,
+    //     target: "blank"
+    // });
+    
+    // $(".descriptionBody").append("<p>Click anywhere to close</p>", name, "<br>", lastPublished, "<br>",  fireDescription, "<br>", fireLink);
+}
+
+function closeAboutModal(){
+    $("#aboutShadow").css({"visibility": "hidden"});
+}

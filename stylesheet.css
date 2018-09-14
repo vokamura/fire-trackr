@@ -19,6 +19,10 @@ h3 {
     margin-top: 2%;
 }
 
+.nav-item a {
+    color: white;
+}
+
 /* LOADING MODAL*/
 #wait {
     position: fixed;
@@ -199,8 +203,34 @@ table a {
     background-color: #feaa6a;
 }
 
-/* SOCIAL MEDIA */
+/* ABOUT MODAL */
+#aboutShadow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* used width: 100vw */
+    height: 100%;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 2;
+}
 
+.aboutBody {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    min-width: 70%;
+    min-height: 70%;
+    color: white;
+    background-color: rgba(0,0,0, .9);
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    overflow-y:auto;
+    width: 94%;
+    border: 3px solid #fd6963;
+    box-sizing: border-box;
+}
 .logoContainer {
     display: flex;
     justify-content: center;
