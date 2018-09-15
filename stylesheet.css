@@ -15,6 +15,7 @@ descriptionBody h1 {
     }
 }
 
+
 h3 {
     margin-top: 2%;
 }
@@ -244,6 +245,10 @@ table a {
 
 .logoContainer a {
     color: white;
+}
+
+.anywhere {
+    color: #fd6963
 }
 
 @media only screen and (max-width: 576px) { 
