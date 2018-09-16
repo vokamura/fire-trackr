@@ -41,12 +41,20 @@ function getDataFromInciwebServer() {
     $.ajax(getData);
 }
 
-let latArray = [];
-let longArray = [];
-let fireName = [];
-let published = [];
-let description = [];
-let linkToFireInfo = [];
+let fireData = {
+    latArray:[],
+    longArray: [],
+    fireName: [],
+    published: [],
+    description: [],
+    linkToFireInfo: []
+}
+// let latArray = [];
+// let longArray = [];
+// let fireName = [];
+// let published = [];
+// let description = [];
+// let linkToFireInfo = [];
 
 function useXML(response){
 
@@ -55,19 +63,19 @@ function useXML(response){
     console.log(eachFireItem);
     for (let item=0; item < eachFireItem.length; item++){
         
-        latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
-        longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
-        fireName.push(eachFireItem.find("title")[item].textContent);
-        published.push(eachFireItem.find("published")[item].textContent);
-        linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
+        fireData.latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
+        fireData.longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
+        fireData.fireName.push(eachFireItem.find("title")[item].textContent);
+        fireData.published.push(eachFireItem.find("published")[item].textContent);
+        fireData.linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
 
-        let newName = fireName[item];
+        let newName = fireData.fireName[item];
         let newNewName = newName.replace(/ /g,'');
 
         let fireTitle = $("<a>", {
             href: "#",
             text: eachFireItem.find("title")[item].textContent,
-            onclick: `infoClicked(${latArray[item]}, ${longArray[item]}, "${fireName[item]}", "${linkToFireInfo[item]}")`,
+            onclick: `infoClicked(${fireData.latArray[item]}, ${fireData.longArray[item]}, "${fireData.fireName[item]}", "${fireData.linkToFireInfo[item]}")`,
             id: newNewName
         });
 
@@ -99,9 +107,9 @@ function useXML(response){
         $("tbody").append(fireRow);
 
         if(eachFireItem.find("description")[item]!== undefined){
-            description.push(eachFireItem.find("description")[item].textContent);
+            fireData.description.push(eachFireItem.find("description")[item].textContent);
         } else {
-            description.push("No update description provided.  Please click on link to find out more.");
+           fireData.description.push("No update description provided.  Please click on link to find out more.");
         }
     } 
     runMarkers(); 
@@ -117,20 +125,20 @@ function openDescModal(e){
     $(".descriptionBody").addClass("descriptionAnimation");
 
     let name = $("<h1>", {
-        text: fireName[e.target.id]
+        text: fireData.fireName[e.target.id]
     });
 
     let lastPublished = $("<div>", {
-        text: `Description below last published: ${published[e.target.id]}`
+        text: `Description below last published: ${fireData.published[e.target.id]}`
     })
 
     let fireDescription = $("<div>", {
-        text: description[e.target.id]
+        text: fireData.description[e.target.id]
     });
     
     let fireLink = $("<a>", {
-        href: linkToFireInfo[e.target.id],
-        text: `Find out more about the ${fireName[e.target.id]}`,
+        href: fireData.linkToFireInfo[e.target.id],
+        text: `Find out more about the ${fireData.fireName[e.target.id]}`,
         target: "blank"
     });
     
@@ -158,9 +166,9 @@ function getMap() {
 }
 
 function runMarkers(){
-    for (let place = 0; place < latArray.length; place++) {
-        let marker = new google.maps.LatLng(latArray[place], longArray[place]);
-        createMarker(marker, fireName[place], linkToFireInfo[place]);
+    for (let place = 0; place < fireData.latArray.length; place++) {
+        let marker = new google.maps.LatLng(fireData.latArray[place], fireData.longArray[place]);
+        createMarker(marker, fireData.fireName[place], fireData.linkToFireInfo[place]);
     }
 }
 
