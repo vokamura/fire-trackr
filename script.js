@@ -16,7 +16,7 @@ function startApp(){
 //Inciweb API
 //https://inciweb.nwcg.gov/feeds/
 function getDataFromInciwebServer() {   
-    let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
+    let inciwebURL = "https://inciweb.nwcg.gov/f$eeds/rss/incidents/";
     let backupURL = "http://www.vikkiokamura.com/firetrackr/backup.xml";
     let proxy = "https://cors.io/?";
     let getData = {
@@ -49,18 +49,25 @@ let fireData = {
     description: [],
     linkToFireInfo: []
 }
-// let latArray = [];
-// let longArray = [];
-// let fireName = [];
-// let published = [];
-// let description = [];
-// let linkToFireInfo = [];
 
 function useXML(response){
 
     let eachFireItem = $(response).find("item");
     let fireCount = eachFireItem.length;
-    console.log(eachFireItem);
+
+    let test = eachFireItem.sort(function(a,b){
+        var nameA = a.innerHTML.toLowerCase(), nameB = b.innerHTML.toLowerCase();
+        if(nameA < nameB){
+            return -1;
+        }
+        if(nameA > nameB){
+            return 1
+        }
+        return 0;;
+    });
+
+    console.log(test);
+
     for (let item=0; item < eachFireItem.length; item++){
         
         fireData.latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
