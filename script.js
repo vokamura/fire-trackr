@@ -16,7 +16,7 @@ function startApp(){
 //Inciweb API
 //https://inciweb.nwcg.gov/feeds/
 function getDataFromInciwebServer() {   
-    let inciwebURL = "https://inciweb.nwcg.gov/f$eeds/rss/incidents/";
+    let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
     let backupURL = "http://www.vikkiokamura.com/firetrackr/backup.xml";
     let proxy = "https://cors.io/?";
     let getData = {
