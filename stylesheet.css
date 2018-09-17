@@ -297,7 +297,7 @@ table a {
         height: 35vh;
     }
     table tbody {
-        height: 30vmin !important;
+        height: 35vmin !important;
     }
 }
 
@@ -306,7 +306,7 @@ table a {
         height: 30vh;
     }
     table tbody {
-        height: 25vmin !important;
+        height: 30vmin !important;
     }
 }
 
