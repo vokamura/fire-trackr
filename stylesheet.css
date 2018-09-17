@@ -15,7 +15,6 @@ descriptionBody h1 {
     }
 }
 
-
 h3 {
     margin-top: 2%;
 }
@@ -156,15 +155,12 @@ h3 {
 }
 
 /* MAP */
-
 #map {
     margin: 1%;
     width: 48%;
 }
 
-
 /* DATA TABLE */
-
 .tableContainer {
     margin: 1%;
     width: 48%;
@@ -256,11 +252,6 @@ table a {
         font-size: 35px;
         text-align: center;
     }
-    /* .logoContainer{
-        flex-direction: column;
-        margin: 0 auto;
-        align-items: center;
-    } */
     .logoImage {
         margin: 0 auto;
     }
