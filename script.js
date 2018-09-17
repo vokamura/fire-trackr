@@ -55,33 +55,31 @@ function useXML(response){
     let eachFireItem = $(response).find("item");
     let fireCount = eachFireItem.length;
 
-    let test = eachFireItem.sort(function(a,b){
-        var nameA = a.innerHTML.toLowerCase(), nameB = b.innerHTML.toLowerCase();
-        if(nameA < nameB){
+    //Sort fires alphabetically and put into new array
+    let alphaArray = eachFireItem.sort(function(a,b){
+        var fireA = a.innerHTML.toLowerCase(), fireB = b.innerHTML.toLowerCase();
+        if(fireA < fireB){
             return -1;
         }
-        if(nameA > nameB){
+        if(fireA > fireB){
             return 1
         }
         return 0;;
     });
 
-    console.log(test);
-
-    for (let item=0; item < eachFireItem.length; item++){
+    for (let item=0; item < alphaArray.length; item++){
+        fireData.fireName.push(alphaArray[item].childNodes[0].textContent);
+        fireData.published.push(alphaArray[item].childNodes[1].textContent);
+        fireData.latArray.push(alphaArray[item].childNodes[4].textContent);
+        fireData.longArray.push(alphaArray[item].childNodes[5].textContent);
+        fireData.linkToFireInfo.push(alphaArray[item].childNodes[6].textContent);
         
-        fireData.latArray.push(response.getElementsByTagName("geo:lat")[item].textContent);
-        fireData.longArray.push(response.getElementsByTagName("geo:long")[item].textContent);
-        fireData.fireName.push(eachFireItem.find("title")[item].textContent);
-        fireData.published.push(eachFireItem.find("published")[item].textContent);
-        fireData.linkToFireInfo.push(eachFireItem.find("link")[item].textContent);
-
         let newName = fireData.fireName[item];
         let newNewName = newName.replace(/ /g,'');
 
         let fireTitle = $("<a>", {
             href: "#",
-            text: eachFireItem.find("title")[item].textContent,
+            text: fireData.fireName[item],
             onclick: `infoClicked(${fireData.latArray[item]}, ${fireData.longArray[item]}, "${fireData.fireName[item]}", "${fireData.linkToFireInfo[item]}")`,
             id: newNewName
         });
@@ -90,7 +88,7 @@ function useXML(response){
         }).append(fireTitle);
 
         let firePublished = $("<td>", {
-            text: eachFireItem.find("published")[item].textContent,
+            text: fireData.published[item],
             id: "hidexs",
             class: "text-center"
         });
@@ -113,12 +111,13 @@ function useXML(response){
 
         $("tbody").append(fireRow);
 
-        if(eachFireItem.find("description")[item]!== undefined){
-            fireData.description.push(eachFireItem.find("description")[item].textContent);
+        if(alphaArray[item].childNodes[8]!== undefined){
+            fireData.description.push(alphaArray[item].childNodes[8].textContent);
         } else {
            fireData.description.push("No update description provided.  Please click on link to find out more.");
         }
     } 
+
     runMarkers(); 
     totalFires(fireCount);  
 }
