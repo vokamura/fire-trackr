@@ -53,26 +53,35 @@ let fireData = {
 function useXML(response){
 
     let eachFireItem = $(response).find("item");
-    let fireCount = eachFireItem.length;
+    let filterArray = [];
 
-    //Sort fires alphabetically and put into new array
-    let alphaArray = eachFireItem.sort(function(a,b){
-        var fireA = a.innerHTML.toLowerCase(), fireB = b.innerHTML.toLowerCase();
-        if(fireA < fireB){
-            return -1;
+    //Filter out events that aren't fires
+    for (var i=0; i < eachFireItem.length; i++){
+        if(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("fire") || eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("burn")){
+            filterArray.push(eachFireItem[i]);
         }
-        if(fireA > fireB){
-            return 1
-        }
-        return 0;;
-    });
+    };
 
-    for (let item=0; item < alphaArray.length; item++){
-        fireData.fireName.push(alphaArray[item].childNodes[0].textContent);
-        fireData.published.push(alphaArray[item].childNodes[1].textContent);
-        fireData.latArray.push(alphaArray[item].childNodes[4].textContent);
-        fireData.longArray.push(alphaArray[item].childNodes[5].textContent);
-        fireData.linkToFireInfo.push(alphaArray[item].childNodes[6].textContent);
+    //Alphabetize list
+    filterArray.sort(function(a,b){
+        let fireA = a.innerHTML.toLowerCase();
+        let fireB = b.innerHTML.toLowerCase();
+            if(fireA < fireB){
+                return -1;
+            }
+            if(fireA > fireB){
+                return 1
+            }
+            return 0;
+        });
+
+    for (let item=0; item < filterArray.length; item++){
+
+        fireData.fireName.push(filterArray[item].childNodes[0].textContent);
+        fireData.published.push(filterArray[item].childNodes[1].textContent);
+        fireData.latArray.push(filterArray[item].childNodes[4].textContent);
+        fireData.longArray.push(filterArray[item].childNodes[5].textContent);
+        fireData.linkToFireInfo.push(filterArray[item].childNodes[6].textContent);
         
         let newName = fireData.fireName[item];
         let newNewName = newName.replace(/ /g,'');
@@ -111,13 +120,14 @@ function useXML(response){
 
         $("tbody").append(fireRow);
 
-        if(alphaArray[item].childNodes[8]!== undefined){
-            fireData.description.push(alphaArray[item].childNodes[8].textContent);
+        if(filterArray[item].childNodes[8]!== undefined){
+            fireData.description.push(filterArray[item].childNodes[8].textContent);
         } else {
            fireData.description.push("No update description provided.  Please click on link to find out more.");
         }
     } 
 
+    let fireCount = fireData.fireName.length;
     runMarkers(); 
     totalFires(fireCount);  
 }
