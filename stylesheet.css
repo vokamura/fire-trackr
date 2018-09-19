@@ -270,7 +270,7 @@ table a {
         margin: 1%;
     }
     table tbody {
-        height: 30vmin !important;
+        height: 50vmin !important;
     }
     .tableScroll {
         width: 100%;
@@ -288,11 +288,11 @@ table a {
         height: 35vh;
     }
     table tbody {
-        height: 35vmin !important;
+        height: 30vmin !important;
     }
 }
 
-@media only screen and (max-height: 720px) and (max-width: 800px) {
+@media only screen and (max-height: 699px) and (max-width: 800px) {
     #map {
         height: 30vh;
     }
