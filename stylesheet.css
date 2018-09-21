@@ -122,23 +122,6 @@ h3 {
     box-sizing: border-box;
 }
 
-/* .descriptionAnimation{
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-
-@-webkit-keyframes animatetop {
-    from {top:-100vh; opacity:0} 
-    to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-    from {top:-100vh; opacity:0}
-    to {top:0; opacity:1}
-} */
-
 .descriptionBody > a {
     font-size: 1.5rem;
     color: #fea46a;
@@ -195,7 +178,6 @@ table a {
     left: 0;
     top: 0;
     width: 100%;
-    /* used width: 100vw */
     height: 100%;
     visibility: hidden;
     cursor: pointer;
