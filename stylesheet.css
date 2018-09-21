@@ -158,6 +158,7 @@ h3 {
 #map {
     margin: 1%;
     width: 48%;
+    height: 55vh;
 }
 
 /* DATA TABLE */
@@ -173,18 +174,6 @@ table tbody {
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     height: 60vmin;
-}
-
-@media only screen and (min-width: 800px) and (max-height: 500px) {
-    table tbody {
-        height: 40vmin !important;
-    }
-}
-
-@media only screen and (min-width: 800px) and (max-height: 610px) {
-    table tbody {
-        height: 50vmin;
-    }
 }
 
 th, td {
@@ -260,9 +249,23 @@ table a {
     }
 }
 
-@media only screen and (max-width: 800px) {
+/* INFO CONTAINER RESPONSIVENESS */
+
+@media only screen and (min-width: 800px) and (max-height: 500px) {
+    table tbody {
+        height: 40vmin !important;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-height: 610px) {
+    table tbody {
+        height: 50vmin;
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-height: 420px){
     #map {
-        height: 35vh;
+        height: 55vh;
         width: 96%;
     }
     .tableContainer{
@@ -283,7 +286,34 @@ table a {
     }
 }
 
-@media only screen and (min-height: 720px) and (max-width: 800px) {
+@media only screen and (min-height: 0px) and (min-width: 420px) {
+    #map {
+        height: 55vh;
+    }
+    table tbody {
+        height: 50vmin !important;
+    }
+}
+
+ @media only screen and (max-height: 730px) and (max-width: 470px) {
+    #map {
+        height: 35vh;
+    }
+    table tbody {
+        height: 40vmin !important;
+    }
+}
+
+@media only screen and (max-height: 658px) and (max-width: 470px) {
+    #map {
+        height: 35vh;
+    }
+    table tbody {
+        height: 35vmin !important;
+    }
+}
+
+@media only screen and (max-height: 620px) and (max-width: 470px) {
     #map {
         height: 35vh;
     }
@@ -292,7 +322,7 @@ table a {
     }
 }
 
-@media only screen and (max-height: 699px) and (max-width: 800px) {
+@media only screen and (max-height: 580px) and (max-width: 470px) {
     #map {
         height: 30vh;
     }
@@ -301,16 +331,16 @@ table a {
     }
 }
 
-@media only screen and (max-height: 587px) and (max-width: 800px) {
+@media only screen and (max-height: 540px) and (max-width: 470px) {
     #map {
-        height: 25vh;
+        height: 30vh;
     }
     table tbody {
         height: 20vmin !important;
     }
 }
 
-@media only screen and (max-height: 502px) and (max-width: 800px) {
+@media only screen and (max-height: 471px) and (max-width: 470px) {
     #map {
         height: 20vh;
     }
@@ -319,4 +349,65 @@ table a {
     }
 }
 
-/* 737 and 801 width is still off */
+@media only screen and (min-height: 0px) and (max-width: 600px) {
+    #map {
+        height: 20vh;
+    }
+    table tbody {
+        height: 20vmin !important;
+    }
+}
+
+@media only screen and (min-height: 580px) and (max-width: 600px) {
+    #map {
+        height: 25vh;
+    }
+    table tbody {
+        height: 25vmin !important;
+    }
+}
+
+@media only screen and (min-height: 620px) and (max-width: 600px) {
+    #map {
+        height: 30vh;
+    }
+    table tbody {
+        height: 25vmin !important;
+    }
+}
+
+@media only screen and (min-height: 730px) and (max-width: 600px) {
+    #map {
+        height: 35vh;
+    }
+    table tbody {
+        height: 30vmin !important;
+    }
+}
+
+@media only screen and (min-height: 471px) and (max-width: 799px) {
+    #map {
+        height: 20vh;
+    }
+    table tbody {
+        height: 15vmin !important;
+    }
+}
+
+@media only screen and (min-height: 560px) and (max-width: 799px) {
+    #map {
+        height: 25vh;
+    }
+    table tbody {
+        height: 25vmin !important;
+    }
+}
+
+@media only screen and (min-height: 715px) and (max-width: 799px) {
+    #map {
+        height: 35vh;
+    }
+    table tbody {
+        height: 25vmin !important;
+    }
+}
