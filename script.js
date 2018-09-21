@@ -16,7 +16,7 @@ function startApp(){
 //Inciweb API
 //https://inciweb.nwcg.gov/feeds/
 function getDataFromInciwebServer() {   
-    let inciwebURL = "https://inciweb.nwcg.gov/f$eeds/rss/incidents/";
+    let inciwebURL = "https://inciweb.nwcg.gov/feeds/rss/incidents/";
     let backupURL = "http://www.vikkiokamura.com/firetrackr/backup.xml";
     let proxy = "https://cors.io/?";
     let getData = {
@@ -53,11 +53,12 @@ let fireData = {
 function useXML(response){
 
     let eachFireItem = $(response).find("item");
-    let filterArray = [];
+    let filterArray = []; 
+    let prescribedRegex = /prescribed/gm;
 
     //Filter out events that aren't fires
     for (var i=0; i < eachFireItem.length; i++){
-        if(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("fire") || eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("burn")){
+        if(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("wildfire") && !prescribedRegex.test(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase())){
             filterArray.push(eachFireItem[i]);
         }
     };
