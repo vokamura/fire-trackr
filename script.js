@@ -56,10 +56,15 @@ function useXML(response){
     let filterArray = []; 
     let prescribedRegex = /prescribed/gm;
 
-    //Filter out events that aren't fires
-    for (var i=0; i < eachFireItem.length; i++){
-        if(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase().includes("wildfire") && !prescribedRegex.test(eachFireItem[i].innerHTML.replace(/ /g,'').toLowerCase())){
-            filterArray.push(eachFireItem[i]);
+    for (let item=0; item < eachFireItem.length; item++){
+        //Filter out and replace &amp
+        if(eachFireItem[item].childNodes[0].textContent.includes("&amp")){
+            eachFireItem[item].childNodes[0].textContent = eachFireItem[item].childNodes[0].textContent.replace("&amp;", "&");
+        }
+
+        //Filter out events that aren't fires
+        if(eachFireItem[item].innerHTML.replace(/ /g,'').toLowerCase().includes("wildfire") && !prescribedRegex.test(eachFireItem[item].innerHTML.replace(/ /g,'').toLowerCase())){
+            filterArray.push(eachFireItem[item]);
         }
     };
 
