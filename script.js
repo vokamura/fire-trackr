@@ -250,3 +250,17 @@ function openAboutModal(e){
 function closeAboutModal(){
     $("#aboutShadow").css({"visibility": "hidden"});
 }
+
+// If screen has touch, increase size of table body
+window.onload = function (){ 
+    if ("ontouchstart" in document.documentElement)
+    {
+        console.log("Is touch");
+        console.log(document.getElementsByTagName("tbody")[0]);
+        document.getElementsByTagName("tbody")[0].setAttribute("id", "mobileTable");
+    }
+    else
+    {
+        console.log("device isn't touch");
+    }
+}

@@ -330,6 +330,12 @@ table a {
         height: 20vmin !important;
     }
 }
+/* 
+@media only screen and (max-height: 670px) and (min-width: 500x) {
+    table tbody {
+        height: 35vmin !important;
+    }
+} */
 
 @media only screen and (min-height: 0px) and (max-width: 600px) {
     #map {
@@ -392,4 +398,8 @@ table a {
     table tbody {
         height: 25vmin !important;
     }
+}
+
+#mobileTable {
+    height: 40vmin !important;
 }
