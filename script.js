@@ -260,12 +260,10 @@ function closeAboutModal(){
 window.onload = function (){ 
     if ("ontouchstart" in document.documentElement)
     {
-        console.log("Is touch");
-        console.log(document.getElementsByTagName("tbody")[0]);
         document.getElementsByTagName("tbody")[0].setAttribute("id", "mobileTable");
     }
     else
     {
-        console.log("device isn't touch");
+        // console.log("device isn't touch");
     }
 }
