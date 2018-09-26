@@ -257,12 +257,7 @@ table a {
 .logoContainer {
     display: flex;
     justify-content: center;
-    align-items: baseline;
-}
 
-.logoImage {
-    width: 70px;
-    margin: 25px;
 }
 
 .logoContainer a {
