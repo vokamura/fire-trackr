@@ -244,7 +244,6 @@ table a {
     left: 50%;
     top: 50%;
     min-width: 60%;
-    height: 70%;
     color: white;
     background-color: rgba(0,0,0, .9);
     transform: translate(-50%, -50%);
@@ -253,6 +252,10 @@ table a {
     width: 94%;
     border: 3px solid #fd6963;
     box-sizing: border-box;
+}
+
+#aboutShadow h1 {
+    color: #fd6963
 }
 .logoContainer {
     display: flex;
