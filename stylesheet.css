@@ -252,6 +252,7 @@ table a {
     width: 94%;
     border: 3px solid #fd6963;
     box-sizing: border-box;
+    font-size: 1.25rem;
 }
 
 #aboutShadow h1 {
